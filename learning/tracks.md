@@ -18,6 +18,36 @@ Tools change (CRA died, Vite took over). The middle column doesn't. When the lab
 forces a tool choice, write *why* in `brain/patterns/` so the reasoning survives
 the tool.
 
+## Weekly rhythm (agreed 2026-11-02: beginner, ~1 h/day, 5 days)
+
+Learn on the lab, apply on your own project. The lab adds one concept at a
+time; the own project proves you can use it unaided. Revisit after week 2: if
+the lab feels pointless or the project already needs the next concept, drop
+the lab and `/tutor` inside the project.
+
+| Day | 60 min | Tool |
+|---|---|---|
+| Mon | Lesson on the week's concept | `/teach <concept>` |
+| Tue | Lab step: Nika writes the core | `/tutor taskboard step N` |
+| Wed | Finish the step + proof (test green, 390 px + desktop) | `/tutor` |
+| Thu | Same concept in your own project | normal session; Claude explains non-obvious choices in one line |
+| Fri | 15 min recall (`node bin/learn.mjs exam <topic>`, pick study mode) + 45 min own project | |
+| every session | `/retro` (2 min) | |
+
+| Week | Concept (lab step) | Own project | Proof |
+|---|---|---|---|
+| 0 | Setup: Phase 1 proof, create the lab, onboard lab + own project | gets a CLAUDE.md | both in `labs.md` |
+| 1 | Semantic HTML + Grid (step 0) | one page's layout with grid | screenshots 390 / 1280 |
+| 2 | JS for React: `map`/`filter`, objects, closures (catch-up, no lab step) | — | `/teach` quiz ≥ 80% |
+| 3 | `useState`, snapshot (step 1) | one form or interaction | step 1 test green |
+| 4 | Lists, keys, immutability (step 2) | a list with stable ids | step 2 test green |
+| 5 | `useReducer` (step 3) | — | a test per action |
+| 6 | `useEffect` + custom hook (step 4) | extract one custom hook | reload keeps the board |
+| 7 | Tokens + dark mode (step 5) | tokens / dark mode | contrast passes in both |
+| 8 | Checkpoint: `react-core` + `css-layout` in exam mode | — | ≥ 70%; `/curate` plans weeks 9+ |
+
+A week may repeat; Friday's `/retro` sets the pace.
+
 ## The lab: `taskboard` (a small Kanban app)
 
 Create it as its own repo (`~/projects/taskboard`, `npm create vite@latest`, React,

@@ -18,6 +18,9 @@ Fill in or correct anything below. `/retro` adds lines only with evidence.
 | Styling approach | _(fill in: plain CSS, CSS modules, Tailwind, styled-components…)_ |
 | Build tool | _(fill in: Vite, Next.js, CRA…)_ |
 | TypeScript | not in the main stack yet (code is JavaScript unless a repo says otherwise) |
+| React level | beginner (self, 2026-11-02) |
+| Learning time | ~1 hour a day, 5 days a week (2026-11-02) |
+| Own projects | yes: learns on the taskboard lab, applies on own projects (2026-11-02) |
 
 ## Goals (from the first session, 2026-11-01)
 
@@ -25,6 +28,7 @@ Fill in or correct anything below. `/retro` adds lines only with evidence.
 2. Become a better developer: understand *why*, not only get working code.
 3. Build better-looking, more polished UIs.
 4. A brain that remembers Nika's sessions and gets sharper with each one.
+5. Get better fast, a bit of everything: understanding, speed, polish, job-readiness (2026-11-02). Rhythm and 8-week path: `learning/tracks.md` → "Weekly rhythm".
 
 ## Preferences
 

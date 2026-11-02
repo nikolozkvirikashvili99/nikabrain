@@ -4,7 +4,7 @@ Pace: whatever fits next to real work. `/retro` moves the `Now:` line and
 marks a phase done only when its proof has been shown. The coach hook adds
 `Now:` to the first prompt of every session.
 
-**Now:** Phase 1, last proof: restart Claude Code, open a new session in any folder and ask "what does nikabrain's CORE say about UI proof?". In parallel: open `learning/playbook.html`, then `node bin/learn.mjs exam react-core` in study mode.
+**Now:** Week 0 of the 8-week path (`learning/tracks.md` → "Weekly rhythm"): finish the Phase 1 proof (new session in any folder: "what does nikabrain's CORE say about UI proof?"), create `~/projects/taskboard`, `/onboard-project` it (lab) and one own project (own). Then week 1: `/teach semantic-html-and-grid`.
 
 ## Phases
 

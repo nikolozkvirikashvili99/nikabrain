@@ -35,3 +35,8 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "im font edn developer and i need skills that will be connected to react and next js and everything related to them"
 - **After:** "I'm starting a Next.js 15 App Router app with server actions and Tailwind. Which skills am I missing compared to what nikabrain already has? Recommend at most 5, and absorb only after I approve."
 - **Why:** "everything related" can't be checked against anything. The official Next.js skills turned out to need Next 16.3+, and naming the version would have shown up front whether they fit.
+
+### 2026-11-02: a learning plan with no constraints
+- **Before:** "from the start i want to plan how you and me are going to work together so i become better programer in short time"
+- **After:** "Plan how we work together so I grow fast. I'm a React beginner, I have 1 hour a day, 5 days a week, and my own projects to build. Done when: a weekly rhythm and an 8-week path are written into nikabrain, with a proof per week."
+- **Why:** level, time and "short time" = how many weeks were the three things Claude had to ask for, which cost two rounds of questions.

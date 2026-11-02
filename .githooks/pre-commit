@@ -1,0 +1,4 @@
+#!/bin/sh
+# Secret + private-term scan on every nikabrain commit (core.hooksPath=.githooks, set by bin/install.mjs).
+# Git for Windows runs this with its bundled sh. Prints masked findings only.
+exec node "$(dirname "$0")/../bin/secret-scan.mjs" "$@"

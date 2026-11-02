@@ -1,0 +1,12 @@
+- **Done-criteria** (seeded 2026-11-01, inherited: the single biggest win in the source brain, where "done when" lines went from 10% to 62% of prompts). No evidence about Nika yet; `/retro` adds dated lines from real sessions.
+  - Ask for: "Done when <what you'll see> on <where: localhost:5173 at 390px / the test suite / the build>; allowed / ask first: …".
+  - Claude: when a build prompt has no done-line, propose one as the recommended option in the first question batch.
+  - Next: retire after 3 sessions in a row whose first prompt names the proof.
+  - 2026-11-02: 0/4 prompts had a done-line. The big "port gigabrain's learning system" request ("i need only usful info for me") left the finish line to Claude, so Claude picked the scope (2 exams, 9 tickets, a playbook page).
+  - 2026-11-02 (2nd session): 0/5 prompts had a done-line, but 3 were approvals of a recommendation table ("yes absorb them"), which worked: one OK, then autonomous. The opening skill request named no stack version, and the Next.js skills found need 16.3+.
+- **Show me, don't tell me (UI).** (seeded 2026-11-01) UI work is only done when someone looked at it. No evidence about Nika yet.
+  - Ask for: "…and show me a screenshot at mobile and desktop width".
+  - Claude: for any visible change, look at the running page yourself before saying done, and say which widths and themes you checked.
+- **Learn while shipping.** (seeded 2026-11-01) The goal is to grow, not only to get code.
+  - Ask for: "/tutor" when the task contains a concept you want to own (a custom hook, a reducer, a layout technique); "why this and not X?" when Claude picks something.
+  - Claude: at most one line of "why" for a non-obvious choice; offer `/tutor` once when a task has a learnable core.

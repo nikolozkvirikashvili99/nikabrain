@@ -1,0 +1,207 @@
+{
+  "about": "Every outside source in library/skills: repo, licence, pinned commit, which upstream folder became which local skill, and the replace rules bin/absorb.mjs re-applies on every pull. mode 'pull' = absorb.mjs can refresh it from upstream; 'frozen' = adapted by gigabrain (refresh means re-adapting by hand, so pull refuses without --force); 'vendored' = transformed by hand (see the skill's own note). Exclude lists name upstream files not copied.",
+  "sources": {
+    "ui-ux-pro-max": {
+      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2024 Next Level Builder",
+      "pinned_sha": "3a13158ff1f32156cbe144108de48eda2ecaed9a",
+      "absorbed": "2026-11-01",
+      "mode": "pull",
+      "skills": {
+        "ui-ux-pro-max": ".claude/skills/ui-ux-pro-max"
+      },
+      "edits": {
+        "ui-ux-pro-max": {
+          "replace": [
+            [
+              "\"${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py\"",
+              "~/.claude/skills/ui-ux-pro-max/scripts/search.py"
+            ],
+            [
+              "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max",
+              "~/.claude/skills/ui-ux-pro-max"
+            ]
+          ]
+        }
+      },
+      "skipped": {
+        "banner-design, brand, design, design-system, slides, ui-styling": "sibling skills in the same repo; not needed yet, pull one when a real task shows the gap",
+        "cli/": "npm installer for other agent hosts; nikabrain installs via bin/install.mjs"
+      }
+    },
+    "anthropic-skills": {
+      "repo": "https://github.com/anthropics/skills",
+      "branch": "main",
+      "license": "Apache-2.0 (frontend-design/LICENSE.txt, copied with the skill)",
+      "pinned_sha": "ca45fc496a3436251f191354091d557da31c15b5",
+      "absorbed": "2026-11-01",
+      "mode": "pull",
+      "skills": {
+        "frontend-design": "skills/frontend-design"
+      },
+      "edits": {},
+      "skipped": {
+        "webapp-testing": "Python Playwright toolkit; e2e-testing (JS Playwright) covers Nika's stack",
+        "theme-factory, canvas-design, algorithmic-art": "not web-app UI work",
+        "document skills (docx, pdf, pptx, xlsx)": "available as built-in Claude skills already"
+      }
+    },
+    "vercel-agent-skills": {
+      "repo": "https://github.com/vercel-labs/agent-skills",
+      "branch": "main",
+      "license": "MIT (README and each SKILL.md 'license: MIT'), Vercel",
+      "pinned_sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "absorbed": "2026-11-01",
+      "mode": "pull",
+      "exclude": [
+        "metadata.json",
+        "*.zip"
+      ],
+      "skills": {
+        "react-best-practices": "skills/react-best-practices",
+        "composition-patterns": "skills/composition-patterns",
+        "react-view-transitions": "skills/react-view-transitions"
+      },
+      "edits": {
+        "react-best-practices": {
+          "replace": [
+            [
+              "name: vercel-react-best-practices",
+              "name: react-best-practices"
+            ]
+          ]
+        },
+        "composition-patterns": {
+          "replace": [
+            [
+              "name: vercel-composition-patterns",
+              "name: composition-patterns"
+            ]
+          ]
+        },
+        "react-view-transitions": {
+          "replace": [
+            [
+              "name: vercel-react-view-transitions",
+              "name: react-view-transitions"
+            ]
+          ]
+        }
+      },
+      "skipped": {
+        "react-native-skills": "not in Nika's stack (pull it if mobile work starts)",
+        "deploy-to-vercel, vercel-cli-with-tokens, vercel-optimize": "Vercel-platform specific; pull when a project deploys there",
+        "writing-guidelines": "docs prose review; not a UI skill"
+      }
+    },
+    "vercel-web-interface-guidelines": {
+      "repo": "https://github.com/vercel-labs/web-interface-guidelines",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2025 Vercel Labs",
+      "pinned_sha": "434b7f91364665f2f733b310ec54809bf8f37937",
+      "absorbed": "2026-11-01",
+      "mode": "vendored",
+      "skills": {
+        "web-design-guidelines": "command.md"
+      },
+      "edits": {},
+      "note": "command.md body vendored into library/skills/web-design-guidelines/SKILL.md under nikabrain frontmatter (upstream's skill fetches it from the network at review time). To refresh: absorb.mjs diff, then re-vendor by hand."
+    },
+    "ecc": {
+      "repo": "https://github.com/affaan-m/ECC",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2026 Affaan Mustafa",
+      "pinned_sha": "ef648e01899ba3e8dc6371642deaaf64b4477775",
+      "absorbed": "2026-10-03 (by gigabrain; copied into nikabrain 2026-11-01); production-audit copied from gigabrain 2026-11-02",
+      "mode": "frozen",
+      "skills": {
+        "react-patterns": "skills/react-patterns",
+        "react-testing": "skills/react-testing",
+        "e2e-testing": "skills/e2e-testing",
+        "accessibility": "skills/accessibility",
+        "make-interfaces-feel-better": "skills/make-interfaces-feel-better",
+        "verification-loop": "skills/verification-loop",
+        "search-first": "skills/search-first",
+        "secure-coding": "skills/security-review",
+        "inherit-legacy-style": "skills/inherit-legacy-style",
+        "council": "skills/council",
+        "production-audit": "skills/production-audit"
+      },
+      "checklists": [
+        "react.md",
+        "typescript.md",
+        "silent-failures.md",
+        "tests.md",
+        "security.md",
+        "types.md"
+      ],
+      "skipped": {
+        "react-performance": "replaced by its own upstream, vercel react-best-practices (newer, rule-per-file)",
+        "backend, python, go, devops, homelab, media, content skills": "outside Nika's stack (still in gigabrain if ever needed)"
+      }
+    },
+    "visual-explainer": {
+      "repo": "https://github.com/nicobailon/visual-explainer",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2025 Nico Bailon",
+      "pinned_sha": "5846f5aef34a23c8fea389d2f23ce56224cbf840",
+      "absorbed": "2026-10-06 (by gigabrain; copied into nikabrain 2026-11-01)",
+      "mode": "frozen",
+      "skills": {
+        "visual-explainer": "plugins/visual-explainer"
+      }
+    },
+    "nextjs": {
+      "repo": "https://github.com/vercel/next.js",
+      "branch": "canary",
+      "license": "MIT, Copyright (c) 2025 Vercel, Inc. (license.md at repo root)",
+      "pinned_sha": "f939cba10406f4feeab9f4c1eccda8f225ac84a5",
+      "absorbed": "2026-11-02",
+      "mode": "pull",
+      "clone_note": "next.js is huge: the cache clone is shallow + sparse (`git clone --depth 1 --filter=blob:none --sparse`, then `sparse-checkout set skills`). Recreate it that way before absorb.mjs pull/diff if ~/.cache/nikabrain/upstream/nextjs is missing, or the helper does a full-history clone.",
+      "skills": {
+        "next-dev-loop": "skills/next-dev-loop",
+        "next-bundle-optimizer": "skills/next-bundle-optimizer",
+        "next-cache-components-adoption": "skills/next-cache-components-adoption",
+        "next-cache-components-optimizer": "skills/next-cache-components-optimizer",
+        "next-partial-prefetching-adoption": "skills/next-partial-prefetching-adoption",
+        "next-partial-prefetching-optimizer": "skills/next-partial-prefetching-optimizer"
+      },
+      "edits": {
+        "next-dev-loop": {
+          "replace": [
+            [
+              "If the CLI isn't on `PATH`, install it before continuing — preflight",
+              "If the CLI isn't on `PATH`, ask Nika before installing it globally (nikabrain: confirm installs first) — preflight"
+            ]
+          ]
+        },
+        "next-cache-components-adoption": {
+          "replace": [
+            [
+              "Install it before starting the loop. Don't wait until you hit something `next dev` alone can't explain. It ships alongside this skill, so check whether it is already available first, and install it only if it is not:",
+              "Use it from the start of the loop. Don't wait until you hit something `next dev` alone can't explain. It is already in Nika's library (`~/.claude/skills/next-dev-loop`); the command below is only for a machine without it:"
+            ],
+            [
+              "You don't need permission to install `next-dev-loop` itself. It's a tool, like installing a dev dependency. If a user is present, briefly tell them you're installing it for verification. In a non-interactive run (CI, dashboard, sandbox), install it without asking — \"can't prompt the user\" is not a reason to skip.",
+              "Ask Nika before installing `next-dev-loop` or a global `agent-browser` (nikabrain: confirm installs first; no permission prompt is not permission). In a non-interactive run, skip the install and use the next option."
+            ]
+          ]
+        },
+        "next-partial-prefetching-adoption": {
+          "replace": [
+            [
+              "install it before either development pass unless it is already available",
+              "it is already in Nika's library; ask before installing it anywhere else"
+            ]
+          ]
+        }
+      },
+      "skipped": {
+        ".claude-plugin": "plugin manifest for `npx skills add`; nikabrain installs via bin/install.mjs",
+        "next-best-practices, next-upgrade (old vercel-labs/next-skills)": "retired upstream: guidance now ships in Next.js 16.3+ bundled docs + generated AGENTS.md; upgrades use `npx @next/codemod@latest upgrade`"
+      }
+    }
+  }
+}

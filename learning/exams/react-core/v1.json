@@ -1,0 +1,201 @@
+{
+  "topic": "react-core",
+  "variant": 1,
+  "of": 5,
+  "title": "React core: rendering, state, effects, keys (variant 1)",
+  "description": "Predict what a component shows and when it renders; pick the fix a senior would pick.",
+  "minutes": 20,
+  "pass": 0.7,
+  "domains": [
+    {"id": "rendering", "name": "When and why components render", "weight": 0.27},
+    {"id": "state", "name": "State as a snapshot, updates, immutability", "weight": 0.27},
+    {"id": "effects", "name": "Effects: dependencies, cleanup, when not to use one", "weight": 0.26},
+    {"id": "identity", "name": "Keys, identity and resetting state", "weight": 0.2}
+  ],
+  "questions": [
+    {
+      "id": "react-core-v1-q01", "domain": "rendering",
+      "stem": "No React Compiler. `App` holds a `count` state and renders `<Header />`, which takes no props and is not wrapped in `memo`. You click the button that calls `setCount(c => c + 1)`. What happens to `Header`?",
+      "options": [
+        {"text": "It renders again, because a parent's render renders its children by default", "correct": true, "why": "React re-runs every child of a component that rendered, unless the child bails out (memo with equal props)."},
+        {"text": "It is skipped, because React notices it received no props at all", "correct": false, "why": "Tempting, but 'no props' isn't checked. Only `memo` compares props; without it the child renders with the parent."},
+        {"text": "It is unmounted and mounted again with fresh state on every parent update", "correct": false, "why": "Re-rendering is not remounting. Its state survives, because the same component type sits at the same position."},
+        {"text": "It renders only if the browser DOM of Header would actually change after the click", "correct": false, "why": "The DOM diff happens after rendering. React renders first, then commits only the DOM differences."}
+      ],
+      "explain": "Rendering means React calls your component function. When a component renders, its children render too, by default. That is usually cheap; the DOM is only touched where the output changed. `memo` (or the React Compiler) is how a child opts out.",
+      "refs": ["https://react.dev/learn/render-and-commit", "https://react.dev/reference/react/memo"]
+    },
+    {
+      "id": "react-core-v1-q02", "domain": "rendering",
+      "stem": "No React Compiler. `const Row = memo(function Row({ onSelect }) {...})`. The parent renders `<Row onSelect={() => select(id)} />` and re-renders every time a search box above it changes. A profiler shows `Row` still renders on every keystroke. Why?",
+      "options": [
+        {"text": "`memo` only works on components that have no props at all", "correct": false, "why": "memo compares props shallowly; it is meant for components with props."},
+        {"text": "The arrow function is a new object every render, so the shallow prop comparison fails", "correct": true, "why": "`Object.is(oldFn, newFn)` is false for a freshly created function, so memo has to render. Wrap it in useCallback or pass `id` and a stable handler."},
+        {"text": "Profiling builds disable memo, so the profiler is not showing the production behaviour you would see", "correct": false, "why": "memo works in profiling builds; the renders are real."},
+        {"text": "Search input state changes always force every component on the page to render", "correct": false, "why": "Only the component that owns the state and its subtree render, and memo can cut that subtree."}
+      ],
+      "explain": "memo skips a render only when every prop is `Object.is`-equal to last time. Inline functions, objects and arrays are new each render, so they defeat memo. Stabilise them (useCallback/useMemo), or let the React Compiler do it.",
+      "refs": ["https://react.dev/reference/react/memo", "https://react.dev/reference/react/useCallback"]
+    },
+    {
+      "id": "react-core-v1-q03", "domain": "rendering",
+      "stem": "Inside `function Form() { ... }` a teammate declared `function Field() { const [v, setV] = useState(''); return <input value={v} onChange={e => setV(e.target.value)} /> }` and renders `<Field />`. `Form` re-renders on every keystroke. Users report the input loses focus and clears after each letter. What is the cause?",
+      "options": [
+        {"text": "The input is controlled, and controlled inputs always lose focus while state updates", "correct": false, "why": "Controlled inputs keep focus normally; millions of forms rely on that."},
+        {"text": "`useState('')` resets itself whenever the value it was given changes", "correct": false, "why": "The initial value is used only on the first render of that component instance."},
+        {"text": "`Field` is a new component type on each `Form` render, so React unmounts the old one and mounts a new one", "correct": true, "why": "React compares element types by identity. A function declared inside a render is a different function each time, so its state and DOM are thrown away."},
+        {"text": "The event handler should call `e.preventDefault()` to stop the browser from resetting the field", "correct": false, "why": "Nothing in the browser resets it; React replaces the DOM node because the type changed."}
+      ],
+      "explain": "Never define components inside other components. Move `Field` to the top level (pass what it needs as props). Same type at the same position = state kept; a different type = state reset.",
+      "refs": ["https://react.dev/learn/preserving-and-resetting-state", "https://react.dev/learn/your-first-component#nesting-and-organizing-components"]
+    },
+    {
+      "id": "react-core-v1-q04", "domain": "rendering",
+      "stem": "In development, a `console.log('render')` at the top of a component body prints twice per render. In the production build it prints once. The app is wrapped in `<StrictMode>`. What is going on?",
+      "options": [
+        {"text": "Strict Mode calls component functions twice in development to expose impure rendering", "correct": true, "why": "A pure component gives the same result both times; a side effect in render shows up as a duplicate."},
+        {"text": "There is a bug: something triggers a second state update right after the first render completes", "correct": false, "why": "Then production would show it too. The difference between dev and prod points at Strict Mode."},
+        {"text": "The dev server's hot reload mounts every component twice", "correct": false, "why": "Hot reload re-runs changed modules; it doesn't double every render."},
+        {"text": "React renders once for the virtual DOM and once more for the real DOM", "correct": false, "why": "There is one render, then a commit; React doesn't call your function per tree."}
+      ],
+      "explain": "Strict Mode (development only) double-invokes component bodies, initialisers and reducers, and runs effect setup → cleanup → setup once on mount. It is a test for purity and missing cleanups, not a bug to work around.",
+      "refs": ["https://react.dev/reference/react/StrictMode"]
+    },
+    {
+      "id": "react-core-v1-q05", "domain": "state",
+      "stem": "`count` starts at 0. A click handler runs:",
+      "code": "function handleClick() {\n  setCount(count + 1);\n  setCount(count + 1);\n  setCount(count + 1);\n}",
+      "options": [
+        {"text": "3, because each call adds one to the latest value", "correct": false, "why": "Each call reads `count` from this render's snapshot, which is 0 every time."},
+        {"text": "1, because all three calls compute 0 + 1 from the same snapshot", "correct": true, "why": "They queue 'set to 1' three times. Use `setCount(c => c + 1)` to build on the queued value."},
+        {"text": "It throws a warning because state is set several times in one handler", "correct": false, "why": "Setting state several times in one handler is allowed and batched."},
+        {"text": "3, but the screen updates three separate times one after another so you see it count up", "correct": false, "why": "React batches the updates into one render, and the result is 1 anyway."}
+      ],
+      "explain": "State is a snapshot: within one render, `count` never changes. Updates are batched and applied for the next render. When the next value depends on the previous one, pass an updater function.",
+      "refs": ["https://react.dev/learn/queueing-a-series-of-state-updates", "https://react.dev/learn/state-as-a-snapshot"]
+    },
+    {
+      "id": "react-core-v1-q06", "domain": "state",
+      "stem": "A handler does `setStep(5); console.log(step);` while `step` is 2. A teammate says the log proves `setStep` is broken. What does the log print, and why?",
+      "options": [
+        {"text": "5, because setState is synchronous inside event handlers but async elsewhere", "correct": false, "why": "An old explanation; `step` is a constant of this render either way."},
+        {"text": "2, because `step` is this render's value; the new value arrives in the next render", "correct": true, "why": "`step` is a plain const captured by the handler. Calling the setter asks for a new render; it doesn't change the variable."},
+        {"text": "undefined, because state is cleared while the update is waiting in React's queue", "correct": false, "why": "State is never cleared between renders."},
+        {"text": "2 the first time and 5 if you click it again quickly enough before the next render", "correct": false, "why": "The second click runs a handler from a newer render; it would print 5 there because that render's snapshot is 5, not because of timing."}
+      ],
+      "explain": "Read the new value where it exists: in the next render (or compute it in the handler: `const next = 5; setStep(next); use(next)`). Logging right after the setter always shows the old snapshot.",
+      "refs": ["https://react.dev/learn/state-as-a-snapshot"]
+    },
+    {
+      "id": "react-core-v1-q07", "domain": "state",
+      "stem": "A todo list adds items with `todos.push(newTodo); setTodos(todos);`. Clicking 'Add' does nothing on screen, but the array in the console has the new item. Which fix is right?",
+      "options": [
+        {"text": "Call `forceUpdate()` after `setTodos` so the list refreshes", "correct": false, "why": "Function components have no forceUpdate, and forcing hides the real bug: mutation."},
+        {"text": "`setTodos([...todos, newTodo])`, so React receives a new array", "correct": true, "why": "React compares with `Object.is`; the same mutated array looks unchanged, so the update is skipped."},
+        {"text": "Move `todos` into a `useRef`, because refs are designed for values that change often", "correct": false, "why": "Changing a ref never re-renders; the list would still not update."},
+        {"text": "Wrap the push in `useEffect` so it runs after render", "correct": false, "why": "Still a mutation of the same array; still no change React can see."}
+      ],
+      "explain": "Treat state as read-only. Create a new array or object (`[...a, x]`, `a.filter`, `a.map`, `{...o, k: v}`, `toSorted`) and pass that to the setter. Mutation breaks both re-rendering and memo.",
+      "refs": ["https://react.dev/learn/updating-arrays-in-state"]
+    },
+    {
+      "id": "react-core-v1-q08", "domain": "state",
+      "stem": "A form keeps `firstName` and `lastName` in state, plus `fullName` in a third state that a `useEffect` sets whenever either name changes. The UI briefly shows the old full name after typing. What would a senior change?",
+      "options": [
+        {"text": "Compute `fullName` from the two names during render, and delete the third state and its effect", "correct": true, "why": "Derived values belong in render: always in sync, one render instead of two, less code."},
+        {"text": "Use `useLayoutEffect` instead, so the full name is updated before the browser paints the stale value", "correct": false, "why": "It hides the flash but keeps the extra render and the duplicated state."},
+        {"text": "Add `fullName` to the dependency array", "correct": false, "why": "That adds a loop risk and doesn't remove the stale first render."},
+        {"text": "Store all three in one object state", "correct": false, "why": "Still duplicated data that can drift; the derived value is still stored."}
+      ],
+      "explain": "If you can calculate something from props or state, don't store it. Calculate it while rendering (with `useMemo` only if it's measurably expensive). Effects that only set state from other state are the most common 'you might not need an effect' case.",
+      "refs": ["https://react.dev/learn/you-might-not-need-an-effect#updating-state-based-on-props-or-state"]
+    },
+    {
+      "id": "react-core-v1-q09", "domain": "effects",
+      "stem": "A component fetches products and the tab freezes with thousands of network requests:",
+      "code": "const [items, setItems] = useState([]);\nuseEffect(() => {\n  fetch('/api/products')\n    .then(r => r.json())\n    .then(data => setItems(data));\n});",
+      "options": [
+        {"text": "`fetch` must be awaited inside the effect", "correct": false, "why": "Promise chains are fine; the problem is when the effect runs."},
+        {"text": "There is no dependency array, so the effect runs after every render, and each fetch sets state, which renders again", "correct": true, "why": "No array = run after every render. `setItems(data)` always sets a new array, so it loops forever."},
+        {"text": "The server returns a new array every time, which React rejects", "correct": false, "why": "React accepts any value; the new array is what keeps triggering renders."},
+        {"text": "Effects cannot call setState", "correct": false, "why": "They can; it just has to be guarded by the right dependencies."}
+      ],
+      "explain": "Dependencies decide when an effect re-runs: none = every render, `[]` = after mount only, `[a, b]` = when a or b change. For data fetching in real apps, a library (TanStack Query, SWR) or your framework's loader also handles caching and races.",
+      "refs": ["https://react.dev/reference/react/useEffect", "https://react.dev/learn/synchronizing-with-effects"]
+    },
+    {
+      "id": "react-core-v1-q10", "domain": "effects",
+      "stem": "A profile page fetches `/api/users/${userId}` in an effect with `[userId]`. Clicking quickly from user 1 to user 2 sometimes shows user 1's data under user 2's name. What fixes it properly?",
+      "options": [
+        {"text": "Debounce the clicks by 300 ms", "correct": false, "why": "Narrows the window but a slow response can still arrive last."},
+        {"text": "Return a cleanup that ignores or aborts the old request (an `ignore` flag or `AbortController`)", "correct": true, "why": "The cleanup runs before the next effect, so a late response from the old userId is dropped."},
+        {"text": "Move the fetch into the render body so it happens synchronously", "correct": false, "why": "Fetching in render fires on every render and still can't be awaited."},
+        {"text": "Add `user` to the dependency array as well as `userId`, so both are tracked together", "correct": false, "why": "More re-runs, same race: responses can still arrive out of order."}
+      ],
+      "explain": "Async results can arrive in any order. Every effect that starts async work should clean up: set `ignore = true` (or `controller.abort()`) in the cleanup, and only set state if not ignored.",
+      "refs": ["https://react.dev/learn/synchronizing-with-effects#fetching-data", "https://react.dev/learn/you-might-not-need-an-effect#fetching-data"]
+    },
+    {
+      "id": "react-core-v1-q11", "domain": "effects",
+      "stem": "A timer is supposed to count up every second, but the screen shows 1 and stays at 1:",
+      "code": "const [count, setCount] = useState(0);\nuseEffect(() => {\n  const id = setInterval(() => setCount(count + 1), 1000);\n  return () => clearInterval(id);\n}, []);",
+      "options": [
+        {"text": "`setInterval` doesn't work inside effects; use `setTimeout` recursively", "correct": false, "why": "Intervals work; the callback reads a stale value."},
+        {"text": "The interval callback closed over `count` from the first render (0), so it sets 1 forever; use `setCount(c => c + 1)`", "correct": true, "why": "With `[]` the effect runs once, so its closure always sees count = 0. The updater form reads the latest state."},
+        {"text": "The cleanup clears the interval right after the first tick", "correct": false, "why": "Cleanup runs on unmount here (deps never change), not after a tick."},
+        {"text": "React batches interval updates together and only applies them all when the component unmounts", "correct": false, "why": "Updates from intervals are applied normally, each causing a render."}
+      ],
+      "explain": "Closures capture the values of the render they were created in (a 'stale closure'). Either list the value as a dependency (and accept the re-subscribe), or use an updater function so you don't need the value at all.",
+      "refs": ["https://react.dev/learn/removing-effect-dependencies#are-you-reading-some-state-to-calculate-the-next-state"]
+    },
+    {
+      "id": "react-core-v1-q12", "domain": "effects",
+      "stem": "Product wants an analytics event when the user clicks 'Buy'. A teammate sets `bought` state in the click handler and sends the event in a `useEffect` that watches `bought`. Where should the event be sent?",
+      "options": [
+        {"text": "Keep the effect, but wrap the send in `if (bought)` so it only fires once the flag has turned true", "correct": false, "why": "Still fires on remounts and Strict Mode re-runs, and still ties a user action to rendering."},
+        {"text": "In the click handler itself, because it is caused by that specific interaction", "correct": true, "why": "Code that runs because the user did something belongs in the event handler."},
+        {"text": "In a `useLayoutEffect`, so it fires before paint", "correct": false, "why": "Timing isn't the problem; the event isn't caused by rendering."},
+        {"text": "In the render body, right after reading `bought`", "correct": false, "why": "Render must be pure; side effects there run on every render."}
+      ],
+      "explain": "Ask: why does this code run? Because the component appeared on screen → an effect. Because the user clicked → the event handler. Effects are for synchronising with outside systems, not for reacting to your own events.",
+      "refs": ["https://react.dev/learn/you-might-not-need-an-effect#sending-a-post-request"]
+    },
+    {
+      "id": "react-core-v1-q13", "domain": "identity",
+      "stem": "A list renders `items.map((item, i) => <Row key={i} item={item} />)`. Each `Row` has its own uncontrolled `<input>` for a note. A new item is added to the **top** of the list. Notes now appear next to the wrong items. Why?",
+      "options": [
+        {"text": "Keys must be strings, and numbers are converted unpredictably", "correct": false, "why": "Numbers are fine as keys; the problem is what the number refers to."},
+        {"text": "Index keys follow positions, so every Row keeps its old position's state when the items shift down", "correct": true, "why": "Key 0 was item A and is now the new item, so React reuses A's Row (and its input) for it. Use a stable id: `key={item.id}`."},
+        {"text": "Uncontrolled inputs never keep their values when the list they belong to changes size", "correct": false, "why": "They keep them; they just stay with the key, which here points at the wrong item."},
+        {"text": "`map` creates new elements, so all inputs reset", "correct": false, "why": "They don't reset; they get matched to the wrong items, which is worse."}
+      ],
+      "explain": "A key tells React which item an element is, across renders. Use a stable id from the data. Index keys are only safe when the list never reorders, filters or inserts.",
+      "refs": ["https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key"]
+    },
+    {
+      "id": "react-core-v1-q14", "domain": "identity",
+      "stem": "`<EditProfile user={selected} />` keeps form fields in local state initialised from `user`. When you pick another user in the sidebar, the form still shows the previous user's draft. What is the cleanest fix?",
+      "options": [
+        {"text": "Add a `useEffect` that resets every field when `user` changes", "correct": false, "why": "Works, but renders the stale draft first and must be updated whenever a field is added."},
+        {"text": "Render `<EditProfile key={selected.id} user={selected} />` so a new user gets a fresh component", "correct": true, "why": "A different key at the same position means a different component instance, so React resets all its state."},
+        {"text": "Use `useMemo` to recompute the initial state values whenever the `user` prop object changes between renders", "correct": false, "why": "useState only reads its initial value once; recomputing it has no effect."},
+        {"text": "Move the form state to a global store", "correct": false, "why": "Doesn't decide when to reset; you'd still need to reset per user."}
+      ],
+      "explain": "The key isn't only for lists. Changing an element's key tells React 'this is a different thing', which resets its state and its subtree's state in one move.",
+      "refs": ["https://react.dev/learn/preserving-and-resetting-state#option-2-resetting-state-with-a-key", "https://react.dev/learn/you-might-not-need-an-effect#resetting-all-state-when-a-prop-changes"]
+    },
+    {
+      "id": "react-core-v1-q15", "domain": "identity",
+      "stem": "A glossary renders pairs and React warns 'Each child in a list should have a unique key prop', although each `<dt>` has `key={term.id}`:",
+      "code": "{terms.map(term => (\n  <>\n    <dt key={term.id}>{term.name}</dt>\n    <dd>{term.meaning}</dd>\n  </>\n))}",
+      "options": [
+        {"text": "`<dd>` needs a key too, because every element inside a mapped list needs one", "correct": false, "why": "Only the outermost element returned from map needs a key."},
+        {"text": "The key belongs on the outermost element: use `<Fragment key={term.id}>` around the pair", "correct": true, "why": "The short `<>` syntax can't take a key; `Fragment` imported from React can."},
+        {"text": "Definition lists can't be rendered with `map`", "correct": false, "why": "They can; it's a key placement issue only."},
+        {"text": "Combine the keys as `term.id + 'dt'` and `term.id + 'dd'` so every element gets its own unique string", "correct": false, "why": "Uniqueness isn't the problem; the key is on the wrong element."}
+      ],
+      "explain": "React reads the key on what `map` returns. When that is a fragment, use `<Fragment key=…>`; the `<></>` shorthand doesn't accept attributes.",
+      "refs": ["https://react.dev/reference/react/Fragment#rendering-a-list-of-fragments"]
+    }
+  ]
+}

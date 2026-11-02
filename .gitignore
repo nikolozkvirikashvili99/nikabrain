@@ -1,0 +1,12 @@
+# coach signals, session pointers and lesson candidates: untrusted, may quote sessions
+inbox/*
+!inbox/.gitkeep
+# employer/client names for the pre-commit scan: a committed list would itself leak them
+.githooks/private-terms
+.env
+.env.*
+*.local.json
+node_modules/
+__pycache__/
+*.pyc
+.claude/loop/

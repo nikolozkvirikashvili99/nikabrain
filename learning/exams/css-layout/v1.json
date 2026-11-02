@@ -1,0 +1,198 @@
+{
+  "topic": "css-layout",
+  "variant": 1,
+  "of": 5,
+  "title": "CSS layout: cascade, box, flex, grid (variant 1)",
+  "description": "Predict where boxes land and which rule wins; choose the fix that survives real content.",
+  "minutes": 20,
+  "pass": 0.7,
+  "domains": [
+    {"id": "cascade", "name": "Cascade, specificity, layers", "weight": 0.2},
+    {"id": "box", "name": "Box model, flow, stacking, positioning", "weight": 0.33},
+    {"id": "flex", "name": "Flexbox", "weight": 0.2},
+    {"id": "grid", "name": "Grid and responsive sizing", "weight": 0.27}
+  ],
+  "questions": [
+    {
+      "id": "css-layout-v1-q01", "domain": "cascade",
+      "stem": "Both rules match the same link in `<nav id=\"nav\" class=\"menu\">`, and the second comes later in the file. Which colour wins?",
+      "code": "#nav a { color: gray; }\n.menu a.active { color: crimson; }",
+      "options": [
+        {"text": "crimson, because it comes later in the stylesheet and later rules always win", "correct": false, "why": "Source order only breaks ties between equal specificity."},
+        {"text": "crimson, because it has more selectors (three against two)", "correct": false, "why": "Specificity is compared by column (ids, then classes, then types), not by selector count."},
+        {"text": "gray, because one id outweighs any number of classes", "correct": true, "why": "#nav a = (1,0,1); .menu a.active = (0,2,1). The id column decides first."},
+        {"text": "Whichever the browser parsed last after cache revalidation", "correct": false, "why": "The cascade is deterministic."}
+      ],
+      "explain": "Specificity is a triple (ids, classes/attributes/pseudo-classes, types). Compare left to right; source order only matters when all three are equal. Avoid ids in selectors so you never need to fight them.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity"]
+    },
+    {
+      "id": "css-layout-v1-q02", "domain": "cascade",
+      "stem": "A design system ships `@layer base { #app p { color: red; } }`. Your own stylesheet, not in any layer, has `p { color: blue; }`. No `!important` anywhere. What colour are paragraphs?",
+      "options": [
+        {"text": "red, because #app p is far more specific than a bare p selector", "correct": false, "why": "Layers are compared before specificity."},
+        {"text": "blue, because unlayered styles beat layered styles for normal declarations", "correct": true, "why": "In the cascade, layer order is checked before specificity, and unlayered styles count as the last (strongest) layer."},
+        {"text": "red, because layers always win over unlayered CSS", "correct": false, "why": "The opposite holds for normal declarations (it flips for !important)."},
+        {"text": "It depends on which file loads first", "correct": false, "why": "Load order decides layer order, but unlayered still beats any layer."}
+      ],
+      "explain": "Cascade layers let you rank whole groups of CSS: `@layer reset, base, components;`. Specificity only competes inside the same layer. That is how you stop specificity wars with third-party CSS.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/@layer"]
+    },
+    {
+      "id": "css-layout-v1-q03", "domain": "cascade",
+      "stem": "You write a reusable reset: `:where(ul, ol) { margin: 0; }`. A teammate then writes `ul { margin: 1rem; }` in a component. Which margin applies, and why did you pick `:where`?",
+      "options": [
+        {"text": "1rem, because `:where()` has zero specificity, so any later rule overrides the reset easily", "correct": true, "why": "`:where()` always contributes 0; `ul` is (0,0,1), so it wins."},
+        {"text": "0, because `:where()` takes the specificity of its most specific argument", "correct": false, "why": "That describes `:is()`, not `:where()`."},
+        {"text": "0, because the reset is listed first and resets are applied last by the browser", "correct": false, "why": "Browsers have no special 'reset' stage."},
+        {"text": "1rem, but only in Chromium; Safari treats `:where` like `:is` for specificity purposes", "correct": false, "why": "`:where()` is specified and implemented with zero specificity across modern browsers."}
+      ],
+      "explain": "`:is()` takes the specificity of its strongest argument; `:where()` always has zero. Use `:where` for defaults you want to be easy to override (resets, library base styles).",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/:where"]
+    },
+    {
+      "id": "css-layout-v1-q04", "domain": "box",
+      "stem": "A card has `width: 300px; padding: 20px; border: 2px solid;` and no `box-sizing` rule. How wide is it on screen, and what single rule makes it exactly 300px?",
+      "options": [
+        {"text": "300px already, because width always includes padding and border", "correct": false, "why": "That's border-box behaviour; the default is content-box."},
+        {"text": "344px; add `box-sizing: border-box`", "correct": true, "why": "content-box: 300 + 2×20 padding + 2×2 border = 344. border-box makes width include padding and border."},
+        {"text": "340px, because borders draw inside the padding area and never add any width to the box", "correct": false, "why": "Borders add width in content-box (2px each side)."},
+        {"text": "344px; add `overflow: hidden`", "correct": false, "why": "Overflow clips content; it doesn't change the box size."}
+      ],
+      "explain": "Most projects set `*, *::before, *::after { box-sizing: border-box; }` once, so a width means the whole visible box.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing"]
+    },
+    {
+      "id": "css-layout-v1-q05", "domain": "box",
+      "stem": "Two stacked `<section>`s: the first has `margin-bottom: 24px`, the second `margin-top: 16px`. In normal block flow the gap is A. You then make their parent `display: flex; flex-direction: column;`. The gap becomes B. What are A and B?",
+      "options": [
+        {"text": "A = 40px, B = 40px", "correct": false, "why": "In block flow, vertical margins between siblings collapse."},
+        {"text": "A = 24px, B = 24px, because margins always collapse no matter which layout mode is used", "correct": false, "why": "Flex (and grid) items don't collapse margins."},
+        {"text": "A = 24px, B = 40px", "correct": true, "why": "Block flow collapses to the larger margin (24). Flex items' margins don't collapse, so they add (24 + 16)."},
+        {"text": "A = 16px, B = 24px", "correct": false, "why": "Collapsing keeps the larger margin, not the smaller."}
+      ],
+      "explain": "Margin collapsing is a block-flow rule. That's one reason modern layouts use `gap` on a flex or grid parent instead of margins on children: the spacing doesn't change with the layout mode.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing"]
+    },
+    {
+      "id": "css-layout-v1-q06", "domain": "box",
+      "stem": "A modal has `position: fixed; z-index: 9999` but appears **under** the site header (`z-index: 10`). The modal is rendered inside a `.page` wrapper that has `transform: translateX(0)` for an animation. What is the real fix?",
+      "options": [
+        {"text": "Raise the modal to `z-index: 999999` so it beats every other element", "correct": false, "why": "The modal's z-index only counts inside the wrapper's stacking context; no number escapes it."},
+        {"text": "Render the modal outside `.page` (e.g. a React portal to `document.body`), or remove the transform", "correct": true, "why": "`transform` creates a stacking context (and a containing block for fixed elements). The whole wrapper is ranked against the header."},
+        {"text": "Give the header a negative z-index", "correct": false, "why": "It can push the header behind page content and break its own clicks."},
+        {"text": "Use `position: absolute` instead", "correct": false, "why": "Still inside the same stacking context."}
+      ],
+      "explain": "z-index only competes within a stacking context. `transform`, `filter`, `opacity < 1`, `isolation: isolate`, and positioned elements with a z-index all create one. Overlays go to the top of the document (portal or `<dialog>`'s top layer).",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context", "https://react.dev/reference/react-dom/createPortal"]
+    },
+    {
+      "id": "css-layout-v1-q07", "domain": "box",
+      "stem": "A table of contents has `position: sticky; top: 0;` but scrolls away with the page. Its grandparent `.layout` has `overflow: hidden` (added to hide a horizontal scrollbar). Why doesn't it stick?",
+      "options": [
+        {"text": "Sticky only works on elements that are inside a CSS grid or flex container", "correct": false, "why": "Sticky works in any layout; grid/flex only change how much room it has."},
+        {"text": "`top: 0` should be `top: 0px`, because sticky ignores unitless zero", "correct": false, "why": "Unitless 0 is valid for lengths."},
+        {"text": "`overflow: hidden` makes `.layout` the scroll container it sticks to, and that box itself doesn't scroll", "correct": true, "why": "Sticky positions relative to the nearest ancestor with a scrolling mechanism; the page scroll no longer counts."},
+        {"text": "Sticky needs a `z-index` to work", "correct": false, "why": "z-index affects painting order, not whether it sticks."}
+      ],
+      "explain": "When sticky fails, walk up the ancestors looking for `overflow` other than visible. To hide horizontal overflow without breaking sticky, use `overflow-x: clip` (clip doesn't create a scroll container).",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky_positioning", "https://developer.mozilla.org/en-US/docs/Web/CSS/overflow"]
+    },
+    {
+      "id": "css-layout-v1-q08", "domain": "box",
+      "stem": "A sidebar needs to fill the full height of its parent row, so you give it `height: 100%`. The parent has no height set and is a normal block. The sidebar stays as short as its content. What works?",
+      "options": [
+        {"text": "Make the parent `display: flex` (or grid): items stretch to the row height by default", "correct": true, "why": "`align-items: stretch` is the default, so the sidebar matches its tallest sibling without any height."},
+        {"text": "Use `height: 100vh`, since that is the same as full parent height", "correct": false, "why": "That's the viewport, not the parent; it overflows or leaves gaps."},
+        {"text": "Use `min-height: 100%`, because unlike height it resolves without a definite parent height", "correct": false, "why": "Percent min-height has the same requirement and also resolves to auto."},
+        {"text": "Add `!important` to the height rule", "correct": false, "why": "The rule already applies; the percent just has nothing to resolve against."}
+      ],
+      "explain": "Percentage heights need a parent with a definite height; otherwise they behave like `auto`. Equal-height columns are what flex and grid stretching are for.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/height", "https://developer.mozilla.org/en-US/docs/Web/CSS/align-items"]
+    },
+    {
+      "id": "css-layout-v1-q09", "domain": "flex",
+      "stem": "A row is `display: flex`. The middle child holds a long filename with `white-space: nowrap; overflow: hidden; text-overflow: ellipsis;` but instead of an ellipsis the whole row overflows its container. Which one-line fix makes the ellipsis appear?",
+      "options": [
+        {"text": "Add `flex-shrink: 1` to the middle child so it is allowed to shrink inside the row", "correct": false, "why": "flex-shrink is already 1 by default; the minimum size is what stops it."},
+        {"text": "`min-width: 0` on the middle child", "correct": true, "why": "Flex items default to `min-width: auto`, which won't shrink below the text's width. 0 lets it shrink and the ellipsis kicks in."},
+        {"text": "`width: 100%` on the middle child", "correct": false, "why": "Makes it want even more space; still can't go below min-content."},
+        {"text": "`display: block` on the row", "correct": false, "why": "Loses the flex layout entirely."}
+      ],
+      "explain": "The 'flex child won't shrink' bug is almost always `min-width: auto`. Set `min-width: 0` (or `overflow: hidden` on the item) whenever a flex item contains long text, code or a table.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/min-width", "https://drafts.csswg.org/css-flexbox-1/#min-size-auto"]
+    },
+    {
+      "id": "css-layout-v1-q10", "domain": "flex",
+      "stem": "Three tab buttons with labels 'All', 'Archived' and 'Shared with me' should be the **same width** and fill the row. Which item rule does that?",
+      "options": [
+        {"text": "`flex: auto`, so each tab grows to share the free space evenly", "correct": false, "why": "auto = 1 1 auto: it starts from content width, so longer labels stay wider."},
+        {"text": "`flex: 1`", "correct": true, "why": "1 = 1 1 0%: every item starts from zero and gets an equal share of the space."},
+        {"text": "`flex-grow: 1` alone", "correct": false, "why": "Basis stays auto (content width), so widths differ, like flex: auto."},
+        {"text": "`justify-content: space-between` on the row", "correct": false, "why": "Spreads the gaps, doesn't size the items."}
+      ],
+      "explain": "The basis is the starting size before growing. `flex: 1` (basis 0) = equal widths; `flex: auto` (basis auto) = content-proportional. Equal tabs, equal columns → `flex: 1` (or grid with `1fr` columns).",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/flex"]
+    },
+    {
+      "id": "css-layout-v1-q11", "domain": "flex",
+      "stem": "A login form column is `display: flex; flex-direction: column; justify-content: center;`. The fields are vertically centred but stuck to the left. You want them centred horizontally too. What do you add?",
+      "options": [
+        {"text": "`justify-content: center` a second time, after the first one in the same rule", "correct": false, "why": "It's already set; in a column it works vertically."},
+        {"text": "`align-items: center`", "correct": true, "why": "In a column the cross axis is horizontal, and align-items controls the cross axis."},
+        {"text": "`text-align: center`", "correct": false, "why": "Centres inline text inside each box, not the boxes."},
+        {"text": "`flex-direction: row` and `justify-content: center`", "correct": false, "why": "Puts the fields side by side."}
+      ],
+      "explain": "justify-content = along the main axis (flex-direction); align-items = across it. Switching to `column` swaps which one is horizontal.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container"]
+    },
+    {
+      "id": "css-layout-v1-q12", "domain": "grid",
+      "stem": "A 700px wide grid has `grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))` and no gap. It holds only **two** cards, and they look narrow with an empty column beside them. What changes if you use `auto-fit` instead?",
+      "options": [
+        {"text": "Nothing; the two keywords are aliases kept for backward compatibility", "correct": false, "why": "They differ exactly when there are fewer items than tracks."},
+        {"text": "The empty track collapses and the two cards stretch to 350px each", "correct": true, "why": "Three 200px tracks fit. auto-fill keeps the empty third (cards ~233px); auto-fit collapses it, so the 1fr cards share all 700px."},
+        {"text": "The cards drop to exactly 200px wide each and leave a 300px gap on the right side", "correct": false, "why": "minmax(…, 1fr) lets them grow; they never stop at 200px with free space."},
+        {"text": "The grid switches to one column", "correct": false, "why": "Track count depends on width (3 fit), not on keyword."}
+      ],
+      "explain": "Both create as many tracks as fit. auto-fill keeps empty ones (stable column widths); auto-fit collapses empty ones (items stretch). Card galleries with few items usually want auto-fit.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/repeat#auto-fill"]
+    },
+    {
+      "id": "css-layout-v1-q13", "domain": "grid",
+      "stem": "A two-column layout uses `grid-template-columns: 1fr 1fr`. When a long URL or a wide code block appears in the left column, it becomes much wider than the right one. Which change keeps the columns equal?",
+      "options": [
+        {"text": "Set the columns to `50% 50%` instead of fractions", "correct": false, "why": "With a gap that overflows, and long content still overflows the track."},
+        {"text": "`grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)`", "correct": true, "why": "`1fr` means `minmax(auto, 1fr)`; auto lets min-content push the track wider. A 0 minimum lets it shrink."},
+        {"text": "`grid-auto-flow: dense` so the long content is moved to a different track", "correct": false, "why": "Changes placement order, not track sizing."},
+        {"text": "`width: 50%` on the left child", "correct": false, "why": "The track itself already grew; the child just follows it."}
+      ],
+      "explain": "fr tracks have an automatic minimum (the content's min-content size). For truly equal columns use `minmax(0, 1fr)`, and pair it with `overflow-wrap: anywhere` or a scrolling `pre` for long content.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value", "https://developer.mozilla.org/en-US/docs/Web/CSS/minmax"]
+    },
+    {
+      "id": "css-layout-v1-q14", "domain": "grid",
+      "stem": "A heading uses `font-size: clamp(1rem, 2.5vw, 2rem)`. The root font size is the browser default. On a phone 400px wide, how big is the text?",
+      "options": [
+        {"text": "10px, because 2.5vw of a 400px wide viewport is exactly 10px", "correct": false, "why": "clamp never goes below its minimum (1rem)."},
+        {"text": "16px", "correct": true, "why": "2.5vw = 10px is below the 1rem (16px) minimum, so clamp returns the minimum."},
+        {"text": "32px", "correct": false, "why": "That's the maximum, used only on wide screens (≥ 1280px here)."},
+        {"text": "It depends on the parent's font size", "correct": false, "why": "rem uses the root font size; vw uses the viewport. The parent doesn't matter."}
+      ],
+      "explain": "`clamp(min, preferred, max)` = fluid type with floors and ceilings. A common recipe mixes units in the middle (`1rem + 1.5vw`) so text still responds to the user's zoom and font settings.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"]
+    },
+    {
+      "id": "css-layout-v1-q15", "domain": "grid",
+      "stem": "The same `<ProductCard>` sits in a narrow sidebar and in a wide main column. It should stack vertically when **the card's own space** is under 400px, whatever the viewport. A media query can't do that. What is the setup?",
+      "options": [
+        {"text": "`@container (max-width: 400px)` written inside the card's own CSS, with no other setup needed", "correct": false, "why": "A container query needs a named or typed container ancestor; with none, it never matches."},
+        {"text": "Give the card's wrapper `container-type: inline-size`, then style the card inside `@container (width < 400px)`", "correct": true, "why": "The wrapper becomes a query container; the card is styled by the wrapper's width."},
+        {"text": "Use a `ResizeObserver` in React to set a class on the card from its measured width", "correct": false, "why": "Works but is the JS workaround that container queries replaced."},
+        {"text": "Use `@media (max-width: 400px)` on the sidebar", "correct": false, "why": "Media queries see the viewport, not the sidebar."}
+      ],
+      "explain": "Container queries make components responsive to where they are placed. An element can't query itself: set `container-type` on an ancestor (often a wrapper div), then write `@container` rules for the children.",
+      "refs": ["https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries"]
+    }
+  ]
+}

@@ -40,3 +40,8 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "from the start i want to plan how you and me are going to work together so i become better programer in short time"
 - **After:** "Plan how we work together so I grow fast. I'm a React beginner, I have 1 hour a day, 5 days a week, and my own projects to build. Done when: a weekly rhythm and an 8-week path are written into nikabrain, with a proof per week."
 - **Why:** level, time and "short time" = how many weeks were the three things Claude had to ask for, which cost two rounds of questions.
+
+### 2026-11-03: a big learning wish sent mid-build
+- **Before:** "i want you to think best ways to build this site together and by working together learn my knowalage and skills and all and then make program wich will help me to develop more"
+- **After:** "Pause the build. Before we continue: find out what I already know (a 20-min quiz is fine), then plan the photo site so each feature teaches me one concept. Done when my concepts.md has starting levels and the next 3 features each name a concept. Don't build a new tool yet."
+- **Why:** sent while Claude was building, it got mixed up with the scaffold. Saying "pause" plus naming the outcome (starting levels, features mapped to concepts) makes it a separate, checkable task.

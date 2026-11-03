@@ -4,6 +4,7 @@
   - Next: retire after 3 sessions in a row whose first prompt names the proof.
   - 2026-11-02: 0/4 prompts had a done-line. The big "port gigabrain's learning system" request ("i need only usful info for me") left the finish line to Claude, so Claude picked the scope (2 exams, 9 tickets, a playbook page).
   - 2026-11-02 (2nd session): 0/5 prompts had a done-line, but 3 were approvals of a recommendation table ("yes absorb them"), which worked: one OK, then autonomous. The opening skill request named no stack version, and the Next.js skills found need 16.3+.
+  - 2026-11-03: 0/8 prompts had a done-line, but Nika picked the proposed done option ("4a: running skeleton") in one line. Offering the done-line as an option works; writing one unprompted hasn't started yet.
   - 2026-11-02 (3rd session): 0/7 prompts had a done-line. The learning-plan request left out level, time and horizon, so it took two question rounds; Claude proposed the per-week proofs.
 - **Show me, don't tell me (UI).** (seeded 2026-11-01) UI work is only done when someone looked at it. No evidence about Nika yet.
   - Ask for: "…and show me a screenshot at mobile and desktop width".
@@ -12,3 +13,4 @@
   - Ask for: "/tutor" when the task contains a concept you want to own (a custom hook, a reducer, a layout technique); "why this and not X?" when Claude picks something.
   - Claude: at most one line of "why" for a non-obvious choice; offer `/tutor` once when a task has a learnable core.
   - 2026-11-02: Nika asked for a plan to get better fast; agreed rhythm (lesson → tutor → own project → recall) in `learning/tracks.md`. Not yet practised: no `/teach` or `/tutor` run so far.
+  - 2026-11-03: Nika chose "mixed" mode (writes the Header + grid CSS) and asked to learn through the real project. Still no `/tutor` run: the session paused before Nika's part.

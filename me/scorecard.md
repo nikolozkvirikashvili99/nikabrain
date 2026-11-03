@@ -30,4 +30,5 @@ single number. Scores run 0–10. The first score is taken at the first
 | Date | Project | Signals (from `inbox/signals.jsonl` since the last row) | Note |
 |---|---|---|---|
 | 2026-11-02 | nikabrain (library growth) | 4 rows, 0 flags; by hand: 5 prompts, 0 done-lines, 3 were approvals | absorbed 6 Next.js skills + 3 gigabrain items |
+| 2026-11-03 | own (photo-portfolio, started from nikabrain) | 7 rows, 1 flag (`no_done` on the learn-while-building message); by hand: 8 prompts, 0 done-lines; the dialog was rejected once, and plain-text answers came back in one line | scaffold done, paused before cleanup |
 | 2026-11-02 | nikabrain (learning plan) | 9 rows, 0 flags (incl. 2 missed one-prompt `claude doctor` sessions); by hand: 7 prompts, 0 done-lines; 2 question dialogs rejected | 8-week learning rhythm agreed; plain-text questions work better than the dialog |

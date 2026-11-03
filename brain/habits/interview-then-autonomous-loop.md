@@ -3,10 +3,10 @@ name: interview-then-autonomous-loop
 description: Ask every question up front in one batch, write checkable acceptance criteria, get one approval, then build/test/debug alone until every criterion passes.
 metadata:
   type: feedback
-  status: confirmed 2026-11-02 (batch → one approval worked; question format adapted, see below)
+  status: confirmed 2026-11-02, re-confirmed 2026-11-03 (plain-text batch is now the default for Nika)
 ---
 
-**Rule:** front-load all interaction. One question batch (`AskUserQuestion`,
+**Rule:** front-load all interaction. One question batch (plain text for Nika,
 up to 4 per round), acceptance criteria that a command can check, one OK.
 Then iterate silently until green. Skill `build-loop` runs this end to end.
 
@@ -22,13 +22,24 @@ Never weaken a check to make it pass.
 **Exception:** a same-day deadline: skip the batch, open with
 "Done when …; assumed …" and build; Nika corrects afterwards.
 
-**Question format for Nika:** if the `AskUserQuestion` dialog is rejected,
-don't re-open it. Ask the same batch as a numbered plain-text list with
-lettered options and one "use defaults" escape. Nika answers in one line.
+**Question format for Nika: plain text first.** Don't open the
+`AskUserQuestion` dialog at all; ask the batch as a numbered plain-text list
+with lettered options, the recommended one marked, and a "defaults" escape.
+Nika answers in one line.
+
+**Mid-loop redirect:** when Nika sends a new direction while the loop runs,
+stop making tool calls and answer it first (or ask "pause or keep going?").
+Don't carry on building alongside it.
 
 **Evidence:** 2026-11-02, learning-plan session: the dialog was rejected twice
 ("go back"); the same 3 questions as a plain list got a one-line answer
 ("1 … 2 b 3 b"), then one plan approval and the edits ran without further asks.
+
+2026-11-03, photo-portfolio session: the dialog was rejected a 3rd time; the
+same 4 questions in plain text got "1 a 2a 3a 4a" plus the real goal ("a
+photograph web site for my wife"). Later, Claude kept building after a long
+mid-turn message about learning; the next tool call was rejected and Nika
+asked to pause ("remember this and do it later").
 
 **Signal:** "build", "make", "until it works", "just get it done".
 **Next time:** first reply = question batch + proposed "Done when" as the recommended option.

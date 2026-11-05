@@ -1,18 +1,19 @@
 repo: C:/Users/qartv/projects/photo-portfolio/.git
-updated: 2026-11-03
+updated: 2026-11-05
 ## Worked
-- Scaffolded with create-vite 9.3.3 (template react): vite 8.3.5, react 19.3.1; confirmed by `npm install` reporting 0 vulnerabilities.
-- Dev deps added: vitest 5.1.0, @testing-library/react 16.3.3, @testing-library/jest-dom 7.0.1, jsdom 30.1.3; confirmed by npm install. `git init` done, nothing committed.
+- Skeleton: tokens.css + global.css, Header / main(Intro #about, Gallery #work) / Footer #contact; data in src/data/{site,photos,socialIcons}.js. Confirmed by build + screenshots 390/1280 light+dark.
+- Header: name + Instagram logo + ☰ menu button (useState/useRef/useEffect; closes on link, Escape (focus returns), outside click). Confirmed by 8 Header tests + real keyboard run in Edge.
+- Footer: email, phone (tel:), Instagram/Facebook/TikTok logos via shared SocialIcon. Confirmed by tests.
+- Onboarded: CLAUDE.md, labs.md row, settings.local.json (memory here; ask before commit/push/npm install).
+- vitest `maxWorkers: 1` (worker OOM crash, exit 134). Confirmed: 3 clean runs, 12/12.
+- Nika filled in real name, email, phone and social URLs in site.js.
 ## Failed: do not retry
-- (none)
+- `! npm test` for watch mode: `!` runs once and exits. Use Nika's VS Code terminal.
 ## Not tried yet
-- Removing the Vite demo (src/App.css, src/assets/, demo tokens in src/index.css). Nika stopped the turn before the cleanup ran.
-- Vitest config (`test: { environment: 'jsdom', setupFiles }` in vite.config.js); check that the jest-dom 7 vitest entry exists before importing it.
-- tokens.css: photo-first neutral (zinc / black-white), Space Grotesk for headings + Archivo for body (ui-ux-pro-max), light + dark via prefers-color-scheme. Skip the tool's "scroll storytelling" pattern; it doesn't suit a gallery.
-- App frame + Intro/Gallery/Footer, placeholder picsum photos (fixed seeds, alt/width/height/lazy), placeholder name in one place.
-- Failing Header RTL test + stub Header; Nika writes Header.jsx and the gallery grid-template-columns (/tutor).
-- /onboard-project (own) → CLAUDE.md + labs.md row; build, test, screenshots at 390/1280 in light and dark, ui-reviewer.
-- Learning idea (not agreed yet): baseline exams (react-core, css-layout) to fill me/concepts.md, then build the site one concept per feature; maybe use it as the lab instead of taskboard.
+- Gallery grid: `.gallery__grid` TODO in global.css (grid-template-columns repeat(auto-fill, minmax(…,1fr)) + gap token). Only 1 photo in photos.js now; add placeholders temporarily to see columns.
+- Real photos: Nika puts files in public/photos/ (~2000px long side), then switch photos.js to local src + alt text.
+- Stale TODO(Nika) comment in site.js (links are filled in); Nika may delete it.
+- ui-reviewer pass on header menu + footer.
+- Offer /teach semantic-html-and-grid around the grid work (see suggest-lessons-later.md).
 ## Next step
-Ask Nika in plain text: "baseline exam first, or continue the scaffold?" Then clean out the Vite demo.
-Plan: C:\Users\qartv\.claude\plans\ok-i-want-to-cozy-pizza.md
+Gallery grid: ask "watch or try?", then build it with temporary placeholder photos and screenshot 390/1280.

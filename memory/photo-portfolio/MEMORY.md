@@ -1,0 +1,2 @@
+- [Visual learner: watch, then do](visual-learner-watch-then-do.md) — in /tutor, build in visible steps with tests + screenshot, then Nika does the next piece
+- [Suggest lessons later](suggest-lessons-later.md) — offer /teach on components + import/export and on grid at the right moment

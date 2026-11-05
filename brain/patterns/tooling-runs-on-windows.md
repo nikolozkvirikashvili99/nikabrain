@@ -20,6 +20,22 @@ pick one shell per command.
 - **Heredocs with apostrophes broke in the Bash tool** (2026-11-01, while
   building nikabrain: `unexpected EOF while looking for matching '`). For
   multi-file writes, use the Write tool, or a Node script.
+  Same root cause, 2026-11-05: a JS template literal inside `node -e "…"`
+  lost its `${site.name}` (bash expanded it to nothing, giving `aria-label={}`).
+  Code with `${}` or backticks goes in a script *file* (Write tool), never in an
+  inline double-quoted `node -e`.
+- **Vitest workers crash on Nika's 8 GB machine** (2026-11-05): with VS Code,
+  the dev server and Edge open, free RAM was ~1.1 GB, and the default pool
+  (one jsdom worker per core, 4) died at startup with `Worker exited
+  unexpectedly with exit code 134`. Only some test files ran, so the summary
+  showed fewer tests, not failures. Fix: `test: { maxWorkers: 1 }` in
+  `vite.config.js` (3/3 clean runs after). Watch for a test *count* drop.
+- **Opening VS Code for Nika:** `code .` in the repo, not `code path/file.jsx`.
+  A single file opens with no Explorer tree, and Nika couldn't find
+  `src/data/` (2026-11-05).
+- **Screenshots without a Playwright dep:** `npm i playwright-core` in the
+  scratchpad + `chromium.launch({ channel: 'msedge' })` drives the installed
+  Edge, so there's no browser download (2026-11-05).
 - **Links:** `fs.symlinkSync(target, path, 'junction')` works for directories
   without admin rights. File symlinks need Developer Mode or admin, so
   `bin/install.mjs` writes `~/.claude/CLAUDE.md` as a 3-line file that

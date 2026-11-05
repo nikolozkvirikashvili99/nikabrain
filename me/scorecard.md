@@ -31,4 +31,5 @@ single number. Scores run 0–10. The first score is taken at the first
 |---|---|---|---|
 | 2026-11-02 | nikabrain (library growth) | 4 rows, 0 flags; by hand: 5 prompts, 0 done-lines, 3 were approvals | absorbed 6 Next.js skills + 3 gigabrain items |
 | 2026-11-03 | own (photo-portfolio, started from nikabrain) | 7 rows, 1 flag (`no_done` on the learn-while-building message); by hand: 8 prompts, 0 done-lines; the dialog was rejected once, and plain-text answers came back in one line | scaffold done, paused before cleanup |
+| 2026-11-05 | own (photo-portfolio) | 40 rows, 2 `no_done`, 3 `research` (all 3 false positives: concept questions); by hand: 0 done-lines, 1 self-written better prompt, 1 screenshot sent for a bug | skeleton + Header + menu + socials + phone; onboarded; first /tutor |
 | 2026-11-02 | nikabrain (learning plan) | 9 rows, 0 flags (incl. 2 missed one-prompt `claude doctor` sessions); by hand: 7 prompts, 0 done-lines; 2 question dialogs rejected | 8-week learning rhythm agreed; plain-text questions work better than the dialog |

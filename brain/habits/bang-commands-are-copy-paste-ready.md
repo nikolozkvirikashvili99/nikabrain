@@ -26,6 +26,9 @@ use") and Git Bash treats it as a redirect.
 5. Long-lived secrets never go into a pasted line. Use a file or an env var the
    command reads, and never echo the value.
 6. Anything that opens a new shell (`ssh`, `wsl`, a REPL) goes in its own block.
+7. `!` runs once and exits: `! npm test` gives one Vitest run, not watch mode
+   (2026-11-05: Claude suggested it for "live re-runs on save", and it wasn't).
+   Watch modes and dev servers belong in Nika's own VS Code terminal.
 
 **Signal:** Claude is about to write a command for Nika to paste.
 

@@ -13,9 +13,9 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Concept | Area | Level | Evidence | Next step |
 |---|---|---|---|---|
 | Rendering & reconciliation (when and why a component re-renders) | react | — | — | `/teach react-rendering` |
-| `useState` / batching / state as a snapshot | react | — | — | |
-| `useEffect`: dependencies, cleanup, "you might not need an effect" | react | — | — | |
-| `useRef` vs state; refs to DOM | react | — | — | |
+| `useState` / batching / state as a snapshot | react | seen | 2026-11-05: watched the menu open/close state built | |
+| `useEffect`: dependencies, cleanup, "you might not need an effect" | react | seen | 2026-11-05: watched Escape/outside-click listeners with cleanup | |
+| `useRef` vs state; refs to DOM | react | seen | 2026-11-05: watched refs used for contains() and focus return | |
 | Custom hooks (extracting stateful logic) | react | — | — | `/tutor`: write one |
 | `useReducer` and state machines for UI | react | — | — | |
 | Context: when it helps, its re-render cost | react | — | — | |
@@ -26,7 +26,7 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Suspense, `use`, transitions | react | — | — | |
 | Component composition (children, compound components, slots) | react | — | — | |
 | Server vs client components (if using Next.js) | react | — | — | |
-| Semantic HTML and landmarks | html | — | — | |
+| Semantic HTML and landmarks | html | seen | 2026-11-05: predicted correctly that RTL finds `<header>` by role and a `<div>` would fail; watched Header built red → green | build: write the next landmark/section unaided |
 | Forms and native validation | html | — | — | |
 | Cascade, specificity, `@layer` | css | — | — | |
 | Box model, flow layout, stacking contexts (`z-index`) | css | — | — | |
@@ -38,7 +38,7 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Accessibility: keyboard, focus, ARIA only when needed, contrast | a11y | — | — | |
 | Closures and scope | js | — | — | |
 | Event loop, promises, `async`/`await`, microtasks | js | — | — | |
-| Modules, bundling, tree-shaking (Vite) | js | — | — | |
+| Modules, bundling, tree-shaking (Vite) | js | seen | 2026-11-05: asked "why not one file?" and "how is it connected?"; walked through export/import with site.js → Header/Intro/Footer | `/teach components-and-import-export` (offered) |
 | Immutability and array/object methods | js | — | — | |
 | Testing UI: React Testing Library queries, user-event | testing | — | — | |
 | End-to-end tests (Playwright) | testing | — | — | |

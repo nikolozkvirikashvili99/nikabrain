@@ -45,3 +45,8 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "i want you to think best ways to build this site together and by working together learn my knowalage and skills and all and then make program wich will help me to develop more"
 - **After:** "Pause the build. Before we continue: find out what I already know (a 20-min quiz is fine), then plan the photo site so each feature teaches me one concept. Done when my concepts.md has starting levels and the next 3 features each name a concept. Don't build a new tool yet."
 - **Why:** sent while Claude was building, it got mixed up with the scaffold. Saying "pause" plus naming the outcome (starting levels, features mapped to concepts) makes it a separate, checkable task.
+
+### 2026-11-05: "continue" with no pointer (Nika wrote the better version)
+- **Before:** "continue the photo site"
+- **After (Nika's own, later):** "continue the photo site; read ~/projects/nikabrain/memory/photo-portfolio/handoff.md, then /onboard-project (own)"
+- **Why:** naming the handoff file and the next step removes the guesswork. Add a done-line too: "…done when the Header test is red and the build passes".

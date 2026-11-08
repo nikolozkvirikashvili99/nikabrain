@@ -16,4 +16,5 @@
   - Claude: at most one line of "why" for a non-obvious choice; offer `/tutor` once when a task has a learnable core.
   - 2026-11-02: Nika asked for a plan to get better fast; agreed rhythm (lesson → tutor → own project → recall) in `learning/tracks.md`. Not yet practised: no `/teach` or `/tutor` run so far.
   - 2026-11-05: first `/tutor` run (Header). Nika switched to "watch me build it" after 2 hints, then made small edits alone (name, email, phone, social links, a syntax fix). Asked 3 good "why/how" questions. Lessons on import/export and grid deferred by Nika ("suggest by the time").
+  - 2026-11-09: Nika asked for a 5-minute lesson before sleep; got the grid `auto-fill`/`minmax`/`min()` pattern plus a quiz, tied to the gallery TODO. This primes week 1 (grid), and no code was written for Nika.
   - 2026-11-03: Nika chose "mixed" mode (writes the Header + grid CSS) and asked to learn through the real project. Still no `/tutor` run: the session paused before Nika's part.

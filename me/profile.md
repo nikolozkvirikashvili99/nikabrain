@@ -34,6 +34,7 @@ Fill in or correct anything below. `/retro` adds lines only with evidence.
 
 - Visual learner: diagrams, interactive pages and worked examples beat long text (Nika, 2026-11-02).
   2026-11-05, first `/tutor` run: two text hints stalled (Nika kept sending the file path, not code), then "you do it on your own and let me watch as i said im visual learner". What worked: Claude builds in 2–4 visible steps, runs the test after each (red → green), one plain line per step, ends with a screenshot. Then Nika does the *next* small piece alone (changed the name, fixed a missing comma, cleaned social URLs). Offer "watch" first; text hint ladders come second.
+- Uses spare minutes to learn: with 5 min before sleep, asked for "1 thing learnt" instead of skipping the day (2026-11-09). Give one bite tied to the next roadmap step or TODO (a snippet, a 3-row table, one predict-then-reveal question), not a full lesson or a build.
 - Editor: VS Code; open the project *folder* for Nika (`code .`), never a single file (2026-11-05).
 - Asks good "why" questions when lost ("why not one file?", "how did you connect it?"). Answer with their real files and a small diagram (2026-11-05).
 - nikabrain is the only brain; gigabrain is reference material, not a second brain (2026-11-02). Projects are opened in their own folder, not from nikabrain (2026-11-05, [[open-claude-in-the-project-folder]]).

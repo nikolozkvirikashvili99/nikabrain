@@ -31,7 +31,7 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Cascade, specificity, `@layer` | css | — | — | |
 | Box model, flow layout, stacking contexts (`z-index`) | css | — | — | |
 | Flexbox | css | — | — | |
-| Grid (incl. `minmax`, `auto-fit`, subgrid) | css | — | — | |
+| Grid (incl. `minmax`, `auto-fit`, subgrid) | css | seen | 2026-11-09: read a 5-min micro-lesson on `repeat(auto-fill, minmax(min(100%, 16rem), 1fr))` and why `min(100%, …)` stops sideways scroll | build it in the gallery TODO via `/tutor` |
 | Responsive design: fluid type, `clamp()`, container queries | css | — | — | |
 | Design tokens / custom properties, theming, dark mode | css | — | — | |
 | Transitions and animations; `prefers-reduced-motion` | css | — | — | |

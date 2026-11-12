@@ -4,7 +4,7 @@ Pace: whatever fits next to real work. `/retro` moves the `Now:` line and
 marks a phase done only when its proof has been shown. The coach hook adds
 `Now:` to the first prompt of every session.
 
-**Now:** Week 0 of the 8-week path (`learning/tracks.md` → "Weekly rhythm"): finish the Phase 1 proof (new session in any folder: "what does nikabrain's CORE say about UI proof?"), create `~/projects/taskboard`, `/onboard-project` it (lab) and one own project (own: `~/projects/photo-portfolio`, onboarded 2026-11-05: CLAUDE.md + labs.md row, lint/test/build green). Still open for Week 0: the Phase 1 proof and the taskboard lab. Then week 1: `/teach semantic-html-and-grid`, applied to the photo-portfolio gallery grid (still a TODO).
+**Now:** Week 0 of the 8-week path (`learning/tracks.md` → "Weekly rhythm"): finish the Phase 1 proof (new session in any folder: "what does nikabrain's CORE say about UI proof?"), create `~/projects/taskboard`, `/onboard-project` it (lab) and one own project (own: `~/projects/photo-portfolio`, onboarded 2026-11-05: CLAUDE.md + labs.md row, lint/test/build green). Still open for Week 0: the Phase 1 proof and the taskboard lab. Week 1 partly done 2026-11-12: Nika wrote the photo-portfolio gallery grid (proof: screenshots at 390/1280). Still open for week 1: `/teach semantic-html-and-grid` (lesson + quiz) to reach "explain".
 
 ## Phases
 

@@ -31,9 +31,9 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Cascade, specificity, `@layer` | css | — | — | |
 | Box model, flow layout, stacking contexts (`z-index`) | css | — | — | |
 | Flexbox | css | — | — | |
-| Grid (incl. `minmax`, `auto-fit`, subgrid) | css | seen | 2026-11-09: read a 5-min micro-lesson on `repeat(auto-fill, minmax(min(100%, 16rem), 1fr))` and why `min(100%, …)` stops sideways scroll | build it in the gallery TODO via `/tutor` |
+| Grid (incl. `minmax`, `auto-fit`, subgrid) | css | build | 2026-11-09: micro-lesson on `repeat(auto-fill, minmax(min(100%, 16rem), 1fr))`. 2026-11-12: wrote the gallery grid line themselves, checked at 390/1280 | explain unaided: why `auto-fill` vs `auto-fit` |
 | Responsive design: fluid type, `clamp()`, container queries | css | — | — | |
-| Design tokens / custom properties, theming, dark mode | css | — | — | |
+| Design tokens / custom properties, theming, dark mode | css | seen | 2026-11-12: asked why the background changed in tokens.css not global.css; got value-vs-usage + dark-mode-for-free | change a token alone (try another `--color-bg`) |
 | Transitions and animations; `prefers-reduced-motion` | css | — | — | |
 | Accessibility: keyboard, focus, ARIA only when needed, contrast | a11y | — | — | |
 | Closures and scope | js | — | — | |

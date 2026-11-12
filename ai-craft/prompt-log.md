@@ -50,3 +50,13 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "continue the photo site"
 - **After (Nika's own, later):** "continue the photo site; read ~/projects/nikabrain/memory/photo-portfolio/handoff.md, then /onboard-project (own)"
 - **Why:** naming the handoff file and the next step removes the guesswork. Add a done-line too: "…done when the Header test is red and the build passes".
+
+### 2026-11-12: "ok" to three open questions
+- **Before:** "ok" (after Claude asked: keep the menu behaviour? rename "Work" to "Albums"? update CLAUDE.md?)
+- **After:** "ok: keep menu, rename to Albums, update CLAUDE.md"
+- **Why:** with one "ok" Claude had to guess, did 2 of 3, and the rename was still unanswered. One word per question removes the guess.
+
+### 2026-11-12: change request with no target
+- **Before:** "i want to change backgroudncolor"
+- **After:** "make the background warm cream, light and dark; done when it looks right at 390 and 1280"
+- **Why:** naming the colour or feel plus the proof skips a question round.

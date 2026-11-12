@@ -45,9 +45,9 @@ because it *is* Nika's daily stack. Watch for that lift here.)
 | skill `web-performance` | web-quality-skills | 2026-11-12 | 0.4 | — |
 | skill `fixing-motion-performance` | ui-skills | 2026-11-12 | 0.4 | — |
 | skill `fixing-metadata` | ui-skills | 2026-11-12 | 0.4 | — |
-| checklist `react.md` | ecc | 2026-11-01 | 0.4 | — |
+| checklist `react.md` | ecc | 2026-11-01 | 0.5 | 2026-11-12: own React SPA review, flagged lost focus on view swap and untested effects; held up |
 | checklist `typescript.md` | ecc | 2026-11-01 | 0.4 | — |
-| checklist `silent-failures.md` | ecc | 2026-11-01 | 0.4 | — |
+| checklist `silent-failures.md` | ecc | 2026-11-01 | 0.5 | 2026-11-12: own React SPA review, caught `decodeURIComponent` throwing in render (blank page); held up |
 | checklist `tests.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `security.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `types.md` | ecc | 2026-11-01 | 0.4 | — |

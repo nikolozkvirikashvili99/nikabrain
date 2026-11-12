@@ -19,3 +19,7 @@ the end, worked.
 increments with a test run after each, explain one line per step, and finish with a
 screenshot. Then have Nika do the *next* similar piece themselves (e.g. the gallery grid
 after watching the header). Candidate for nikabrain `/retro` (concerns the tutor skill).
+
+2026-11-12: the grid line went well (Nika wrote it). For the AlbumCard component, step-by-step
+instructions were too much ("simplify for me" → "do it yourself"). Give Nika a piece of ~1–3
+lines (one CSS rule, one JSX attribute), not a whole component.

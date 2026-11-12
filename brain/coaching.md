@@ -6,10 +6,12 @@
   - 2026-11-02 (2nd session): 0/5 prompts had a done-line, but 3 were approvals of a recommendation table ("yes absorb them"), which worked: one OK, then autonomous. The opening skill request named no stack version, and the Next.js skills found need 16.3+.
   - 2026-11-03: 0/8 prompts had a done-line, but Nika picked the proposed done option ("4a: running skeleton") in one line. Offering the done-line as an option works; writing one unprompted hasn't started yet.
   - 2026-11-05: 0 of ~40 prompts had a done-line, but Nika wrote a better prompt *unprompted* mid-session (handoff path + next skill). Claude stated the done-line before each build (socials, menu); Nika accepted it every time.
+  - 2026-11-12: 0/3 build prompts had a done-line (albums, favicon, background). The background request needed a question round (which colour, dark too?); Claude stated the done-line before building and Nika picked the recommended options in one go.
   - 2026-11-02 (3rd session): 0/7 prompts had a done-line. The learning-plan request left out level, time and horizon, so it took two question rounds; Claude proposed the per-week proofs.
 - **Show me, don't tell me (UI).** (seeded 2026-11-01) UI work is only done when someone looked at it. No evidence about Nika yet.
   - Ask for: "…and show me a screenshot at mobile and desktop width".
   - Claude: for any visible change, look at the running page yourself before saying done, and say which widths and themes you checked.
+  - 2026-11-12: Nika chose "review then commit" over a straight commit; the parallel UI + code review found 6 real issues. Every change was screenshotted at 390/1280 light+dark.
   - 2026-11-05: first evidence. Nika sent a screenshot of the Vite error overlay instead of describing it, which pinpointed a missing comma in one round. Claude screenshotted every UI change at 390/1280 in light and dark.
 - **Learn while shipping.** (seeded 2026-11-01) The goal is to grow, not only to get code.
   - Ask for: "/tutor" when the task contains a concept you want to own (a custom hook, a reducer, a layout technique); "why this and not X?" when Claude picks something.
@@ -17,4 +19,5 @@
   - 2026-11-02: Nika asked for a plan to get better fast; agreed rhythm (lesson → tutor → own project → recall) in `learning/tracks.md`. Not yet practised: no `/teach` or `/tutor` run so far.
   - 2026-11-05: first `/tutor` run (Header). Nika switched to "watch me build it" after 2 hints, then made small edits alone (name, email, phone, social links, a syntax fix). Asked 3 good "why/how" questions. Lessons on import/export and grid deferred by Nika ("suggest by the time").
   - 2026-11-09: Nika asked for a 5-minute lesson before sleep; got the grid `auto-fill`/`minmax`/`min()` pattern plus a quiz, tied to the gallery TODO. This primes week 1 (grid), and no code was written for Nika.
+  - 2026-11-12: Nika wrote the gallery grid CSS (week-1 concept, applied). On the album card Nika said "simplify for me", then "do it yourself", so the tutor step was too big. Nika asked a real "why" (tokens.css vs global.css).
   - 2026-11-03: Nika chose "mixed" mode (writes the Header + grid CSS) and asked to learn through the real project. Still no `/tutor` run: the session paused before Nika's part.

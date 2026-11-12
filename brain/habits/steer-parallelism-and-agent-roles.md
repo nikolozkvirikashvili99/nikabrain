@@ -24,4 +24,9 @@ gap. The same day, a background verifier and researcher saved ~9 minutes.
 **How to apply:** check access (logins, VPN, browser) in the opening question
 batch. Give parallel agents their own work dirs and absolute paths only.
 
-Related: [[worktrees-and-agent-teams]]
+**Nika evidence 2026-11-12:** offered "review then commit" vs "commit" on a ~400-line diff; Nika
+chose review. `reviewer` + `ui-reviewer` ran in parallel in the background (~2.5 min) and
+found a white-page crash on a malformed link, lost keyboard focus, a doubled link name and a
+38 px tap target. All were fixed test-first before the commit. The review half of this habit is confirmed.
+
+Related: [[worktrees-and-agent-teams]], [[hash-view-swap-without-router]]

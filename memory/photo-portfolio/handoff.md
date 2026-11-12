@@ -1,19 +1,18 @@
 repo: C:/Users/qartv/projects/photo-portfolio/.git
-updated: 2026-11-05
+updated: 2026-11-12
 ## Worked
-- Skeleton: tokens.css + global.css, Header / main(Intro #about, Gallery #work) / Footer #contact; data in src/data/{site,photos,socialIcons}.js. Confirmed by build + screenshots 390/1280 light+dark.
-- Header: name + Instagram logo + ☰ menu button (useState/useRef/useEffect; closes on link, Escape (focus returns), outside click). Confirmed by 8 Header tests + real keyboard run in Edge.
-- Footer: email, phone (tel:), Instagram/Facebook/TikTok logos via shared SocialIcon. Confirmed by tests.
-- Onboarded: CLAUDE.md, labs.md row, settings.local.json (memory here; ask before commit/push/npm install).
-- vitest `maxWorkers: 1` (worker OOM crash, exit 134). Confirmed: 3 clean runs, 12/12.
-- Nika filled in real name, email, phone and social URLs in site.js.
+- Gallery grid (Nika wrote `repeat(auto-fill, minmax(16rem, 1fr))`), committed a3ff087. Confirmed by screenshots 390/1280 light+dark.
+- Albums: covers (first photo + title + count) → `#album/<slug>` page; Back / "All albums" return with focus on the origin card; malformed hash falls back to gallery. Committed 510960c. Confirmed by 39 tests, lint, build, Edge keyboard run.
+- Camera favicon (light/dark) + warm paper background tokens + CLAUDE.md refreshed. Committed dd90c4d. Confirmed by screenshots + contrast ≥ 6.5.
 ## Failed: do not retry
-- `! npm test` for watch mode: `!` runs once and exits. Use Nika's VS Code terminal.
+- `--` inside an SVG comment: breaks the SVG (XML).
+- picsum placeholders: HTTP 522; photos are local files now.
+- Playwright `networkidle` on the Vite dev server: times out (HMR socket). Use `load`.
 ## Not tried yet
-- Gallery grid: `.gallery__grid` TODO in global.css (grid-template-columns repeat(auto-fill, minmax(…,1fr)) + gap token). Only 1 photo in photos.js now; add placeholders temporarily to see columns.
-- Real photos: Nika puts files in public/photos/ (~2000px long side), then switch photos.js to local src + alt text.
-- Stale TODO(Nika) comment in site.js (links are filled in); Nika may delete it.
-- ui-reviewer pass on header menu + footer.
-- Offer /teach semantic-html-and-grid around the grid work (see suggest-lessons-later.md).
+- Nika swaps in real photos: overwrite `public/albums/<slug>/NN.jpg`, real alt text in `src/data/albums.js`.
+- Full-screen photo viewer (Nika deferred: "later").
+- Rename menu "Work" → "Albums"? (asked, no answer yet). Menu links on an album page return to the main page (accepted for now).
+- `/teach semantic-html-and-grid` (week 1 still needs the lesson + quiz).
+- Nothing pushed yet (no remote push asked).
 ## Next step
-Gallery grid: ask "watch or try?", then build it with temporary placeholder photos and screenshot 390/1280.
+Ask Nika: real photos now, or the full-screen viewer (offer one 1–3 line piece for Nika to write).

@@ -30,10 +30,10 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Forms and native validation | html | — | — | |
 | Cascade, specificity, `@layer` | css | — | — | |
 | Box model, flow layout, stacking contexts (`z-index`) | css | — | — | |
-| Flexbox | css | — | — | |
+| Flexbox | css | seen | 2026-11-13: walkthrough of `order: -1` (visual order ≠ code order) and `display: flex` + `gap` turning the dropdown into a row | change `order` in DevTools and watch the icon move |
 | Grid (incl. `minmax`, `auto-fit`, subgrid) | css | build | 2026-11-09: micro-lesson on `repeat(auto-fill, minmax(min(100%, 16rem), 1fr))`. 2026-11-12: wrote the gallery grid line themselves, checked at 390/1280 | explain unaided: why `auto-fill` vs `auto-fit` |
-| Responsive design: fluid type, `clamp()`, container queries | css | — | — | |
-| Design tokens / custom properties, theming, dark mode | css | seen | 2026-11-12: asked why the background changed in tokens.css not global.css; got value-vs-usage + dark-mode-for-free | change a token alone (try another `--color-bg`) |
+| Responsive design: fluid type, `clamp()`, container queries | css | seen | 2026-11-13: walkthrough of the desktop header, one `<ul>` shown as ☰ dropdown or row by `@media (min-width: 48rem)` overriding `[hidden]` | change `48rem` → `60rem` and resize the window; then `/tutor` a breakpoint |
+| Design tokens / custom properties, theming, dark mode | css | seen | 2026-11-12: asked why the background changed in tokens.css not global.css; got value-vs-usage + dark-mode-for-free. 2026-11-13: saw why the site was always dark (`prefers-color-scheme` follows the OS) and chose light only | change a token alone (try another `--color-bg`) |
 | Transitions and animations; `prefers-reduced-motion` | css | — | — | |
 | Accessibility: keyboard, focus, ARIA only when needed, contrast | a11y | — | — | |
 | Closures and scope | js | — | — | |

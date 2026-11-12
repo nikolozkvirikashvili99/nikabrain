@@ -44,6 +44,12 @@ pick one shell per command.
 - **Opening VS Code for Nika:** `code .` in the repo, not `code path/file.jsx`.
   A single file opens with no Explorer tree, and Nika couldn't find
   `src/data/` (2026-11-05).
+  From Git Bash, `code . -g file:line` exited silently and no window opened
+  (2026-11-13). What worked, from PowerShell: `Start-Process` on
+  `$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe` with the repo and
+  `-g file:line` args, then `code.cmd -r --diff BEFORE NOW` for red/green views
+  (BEFORE = `git show <rev>:path` saved in the scratchpad).
+  **Prove it opened:** `(Get-Process Code).MainWindowTitle` must be non-empty.
 - **Screenshots without a Playwright dep:** `npm i playwright-core` in the
   scratchpad + `chromium.launch({ channel: 'msedge' })` drives the installed
   Edge, so there's no browser download (2026-11-05).

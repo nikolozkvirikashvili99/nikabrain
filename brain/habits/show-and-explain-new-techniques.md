@@ -26,6 +26,14 @@ explain it to me so I could learn from it." Nika is a visual learner
   the next similar piece. Don't start the lesson unasked.
 - In `/tutor`, the walkthrough comes *after* Nika's attempt, not instead of it.
 
+**Evidence 2026-11-13 (same session):** the first walkthrough came while VS Code
+had silently failed to open, so Nika said "I still can't see VS Code" and then
+"reopen and explain again". The second one worked: before/after **diff tabs**
+(`code --diff`), window checked, then one section per tab (what you see →
+what it means → learn this) plus an ASCII phone/desktop picture and a
+"change 48rem, resize, undo" experiment. Prove the window opened *before*
+explaining ([[tooling-runs-on-windows]]).
+
 **Signal:** the diff contains something Nika hasn't seen in `me/concepts.md`,
 or Claude would explain a choice with "the trick is…".
 **Next time:** add the walkthrough as the last part of the handover, files already open.

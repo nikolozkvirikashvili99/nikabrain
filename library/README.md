@@ -14,12 +14,16 @@ working (evidence in `brain/library-ledger.md`).
 | `NOTICE.md` | upstream licences and credits | `/absorb` |
 | `../brain/library-ledger.md` | confidence + dated evidence per entry | `/retro`, `/curate` |
 
-## What's in it (2026-11-01)
+## What's in it (2026-11-12)
 
 | Skill | From | Use it for |
 |---|---|---|
 | `ui-ux-pro-max` | nextlevelbuilder (MIT) | design systems (style, palette, fonts, spacing) via a local search script; UX rules by priority |
 | `frontend-design` | Anthropic (Apache-2.0) | distinctive, non-generic visual direction for a new page or app |
+| `impeccable` | pbakaus (Apache-2.0) | design commands on a real page: `critique`, `audit`, `polish`, `layout`, `typeset`, `adapt`, `animate`, `document` (launcher left out: no binary download) |
+| `core-web-vitals`, `web-performance` | addyosmani (MIT) | LCP / CLS / INP with field + lab evidence; image loading, page weight |
+| `seo`, `fixing-metadata` | addyosmani, ibelick (MIT) | meta tags, Open Graph, structured data, sitemaps |
+| `fixing-motion-performance` | ibelick (MIT) | janky animations: compositor-only props, layout thrash, scroll-linked motion |
 | `web-design-guidelines` | Vercel (MIT) | the rule set for reviewing UI code (a11y, focus, forms, motion, copy…) |
 | `react-best-practices` | Vercel (MIT) | performance: waterfalls, bundle size, re-renders (one rule per file in `rules/`) |
 | `composition-patterns` | Vercel (MIT) | compound components, avoiding boolean-prop explosions, React 19 APIs |
@@ -28,7 +32,7 @@ working (evidence in `brain/library-ledger.md`).
 | `react-testing` | ECC via gigabrain | React Testing Library, Vitest/Jest, MSW |
 | `e2e-testing` | ECC via gigabrain | Playwright: page objects, flaky tests, CI |
 | `accessibility` | ECC via gigabrain | WCAG 2.2, keyboard, ARIA, contrast |
-| `make-interfaces-feel-better` | ECC via gigabrain | polish: micro-interactions, motion, optical details |
+| `make-interfaces-feel-better` | jakubkrehel (MIT) | polish: typography, surfaces, motion, icons, optical details |
 | `visual-explainer` | nicobailon via gigabrain (MIT) | diagrams and explainer pages (used by `/teach`) |
 | `next-dev-loop` | Vercel / Next.js repo (MIT) | prove a Next.js change at runtime: `/_next/mcp` + `agent-browser` (Next 16.3+, Turbopack) |
 | `next-bundle-optimizer` | Vercel / Next.js repo (MIT) | slow route startup, oversized client bundles, duplicate browser deps (`next analyze`) |

@@ -25,7 +25,7 @@ because it *is* Nika's daily stack. Watch for that lift here.)
 | skill `react-testing` | ecc | 2026-11-01 | 0.4 | — |
 | skill `e2e-testing` | ecc | 2026-11-01 | 0.4 | — |
 | skill `accessibility` | ecc | 2026-11-01 | 0.4 | — |
-| skill `make-interfaces-feel-better` | ecc | 2026-11-01 | 0.4 | — |
+| skill `make-interfaces-feel-better` | make-interfaces-feel-better | 2026-11-01 | 0.4 | 2026-11-12 · re-sourced from original upstream (ECC copy was thinner) |
 | skill `visual-explainer` | visual-explainer | 2026-11-01 | 0.4 | — |
 | skill `verification-loop` | ecc | 2026-11-01 | 0.4 | — |
 | skill `next-dev-loop` | nextjs | 2026-11-02 | 0.4 | — |
@@ -39,6 +39,12 @@ because it *is* Nika's daily stack. Watch for that lift here.)
 | skill `secure-coding` | ecc | 2026-11-01 | 0.4 | — |
 | skill `inherit-legacy-style` | ecc | 2026-11-01 | 0.4 | — |
 | skill `council` | ecc | 2026-11-01 | 0.4 | — |
+| skill `impeccable` | impeccable | 2026-11-12 | 0.4 | — |
+| skill `core-web-vitals` | web-quality-skills | 2026-11-12 | 0.4 | — |
+| skill `seo` | web-quality-skills | 2026-11-12 | 0.4 | — |
+| skill `web-performance` | web-quality-skills | 2026-11-12 | 0.4 | — |
+| skill `fixing-motion-performance` | ui-skills | 2026-11-12 | 0.4 | — |
+| skill `fixing-metadata` | ui-skills | 2026-11-12 | 0.4 | — |
 | checklist `react.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `typescript.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `silent-failures.md` | ecc | 2026-11-01 | 0.4 | — |

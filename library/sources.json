@@ -120,7 +120,6 @@
         "react-testing": "skills/react-testing",
         "e2e-testing": "skills/e2e-testing",
         "accessibility": "skills/accessibility",
-        "make-interfaces-feel-better": "skills/make-interfaces-feel-better",
         "verification-loop": "skills/verification-loop",
         "search-first": "skills/search-first",
         "secure-coding": "skills/security-review",
@@ -138,7 +137,8 @@
       ],
       "skipped": {
         "react-performance": "replaced by its own upstream, vercel react-best-practices (newer, rule-per-file)",
-        "backend, python, go, devops, homelab, media, content skills": "outside Nika's stack (still in gigabrain if ever needed)"
+        "backend, python, go, devops, homelab, media, content skills": "outside Nika's stack (still in gigabrain if ever needed)",
+        "make-interfaces-feel-better": "re-sourced 2026-11-12 from its original upstream (jakubkrehel)"
       }
     },
     "visual-explainer": {
@@ -202,6 +202,101 @@
         ".claude-plugin": "plugin manifest for `npx skills add`; nikabrain installs via bin/install.mjs",
         "next-best-practices, next-upgrade (old vercel-labs/next-skills)": "retired upstream: guidance now ships in Next.js 16.3+ bundled docs + generated AGENTS.md; upgrades use `npx @next/codemod@latest upgrade`"
       }
+    },
+    "impeccable": {
+      "repo": "https://github.com/pbakaus/impeccable",
+      "branch": "main",
+      "license": "Apache-2.0 (LICENSE + NOTICE.md at repo root; ios/android references derive from ehmo/platform-design-skills, MIT)",
+      "pinned_sha": "b4bff1626c344067788c2679f048a20057c7cc5a",
+      "absorbed": "2026-11-12",
+      "mode": "pull",
+      "exclude": [
+        "scripts"
+      ],
+      "skills": {
+        "impeccable": ".claude/skills/impeccable"
+      },
+      "edits": {
+        "impeccable": {
+          "replace": [
+            [
+              "1. Run `<skill-base-dir>/scripts/impeccable context` once per session",
+              "1. (nikabrain: the launcher is not installed, because it downloads a binary. Always take the \"Launcher unavailable\" path below, silently.) Upstream: run `<skill-base-dir>/scripts/impeccable context` once per session"
+            ]
+          ]
+        }
+      },
+      "skipped": {
+        "scripts/ (launcher, binary download, live-browser JS)": "downloads a platform binary on first run; nikabrain confirms installs first. Skill uses its documented no-launcher path",
+        "other dot-folders (.cursor, .gemini, …), plugin/": "the same skill packaged for other agents"
+      }
+    },
+    "web-quality-skills": {
+      "repo": "https://github.com/addyosmani/web-quality-skills",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2026 Addy Osmani",
+      "pinned_sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "absorbed": "2026-11-12",
+      "mode": "pull",
+      "skills": {
+        "core-web-vitals": "skills/core-web-vitals",
+        "seo": "skills/seo",
+        "web-performance": "skills/performance"
+      },
+      "edits": {
+        "web-performance": {
+          "replace": [
+            [
+              "name: performance",
+              "name: web-performance"
+            ]
+          ]
+        }
+      },
+      "skipped": {
+        "accessibility": "library already has accessibility (ecc)",
+        "best-practices": "overlaps secure-coding + web-design-guidelines",
+        "web-quality-audit": "analyze.sh is a grep-level HTML check that needs jq; the three taken skills cover the substance"
+      }
+    },
+    "ui-skills": {
+      "repo": "https://github.com/ibelick/ui-skills",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2026 Julien Thibeaut",
+      "pinned_sha": "ba966a3aaa4080ab1836d350f3131584e2d4243a",
+      "absorbed": "2026-11-12",
+      "mode": "pull",
+      "skills": {
+        "fixing-motion-performance": "skills/fixing-motion-performance",
+        "fixing-metadata": "skills/fixing-metadata"
+      },
+      "edits": {},
+      "skipped": {
+        "baseline-ui": "mandates Tailwind, cn and motion/react; conflicts with plain-CSS projects",
+        "fixing-accessibility": "overlaps accessibility",
+        "improve-ui": "overlaps impeccable critique/audit",
+        "component-canvas, create-canvas, ui-skills-root": "exploration toys / need their CLI",
+        "create-design-md": "maybe later, if impeccable document falls short"
+      }
+    },
+    "make-interfaces-feel-better": {
+      "repo": "https://github.com/jakubkrehel/make-interfaces-feel-better",
+      "branch": "main",
+      "license": "MIT, Copyright (c) 2026 Jakub Krehel",
+      "pinned_sha": "35545ea1512ad59fa463e6b1f95ca9c052981fe6",
+      "absorbed": "2026-11-12",
+      "mode": "pull",
+      "exclude": [
+        "agents"
+      ],
+      "skills": {
+        "make-interfaces-feel-better": "skills/make-interfaces-feel-better"
+      },
+      "edits": {},
+      "skipped": {
+        "agents/openai.yaml": "Codex UI metadata"
+      },
+      "note": "Original upstream of the ECC copy; re-sourced 2026-11-12 (ECC copy was a thinner salvaged version)."
     }
   }
 }

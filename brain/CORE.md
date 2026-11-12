@@ -57,11 +57,11 @@ wants to automate routine work *and* grow as a developer. Profile and goals:
 |---|---|
 | New page, app or visual direction | `ui-ux-pro-max` (`--design-system`) then `frontend-design` |
 | Components, state, hooks, data fetching | `react-patterns`, `composition-patterns` |
-| Slow renders, bundle size, waterfalls | `react-best-practices` |
-| Animations, page transitions | `make-interfaces-feel-better`, `react-view-transitions` |
+| Slow renders, bundle size · page load, LCP/CLS, SEO | `react-best-practices` · `core-web-vitals`, `seo` |
+| Animations, page transitions | `make-interfaces-feel-better`, `react-view-transitions`, `fixing-motion-performance` (jank) |
 | Accessibility | `accessibility` |
 | Tests | `react-testing` (unit/RTL), `e2e-testing` (Playwright) |
-| Reviewing UI code | `web-design-guidelines`, agent `ui-reviewer` |
+| Reviewing, critiquing or polishing UI | `web-design-guidelines`, `impeccable` (`critique`, `audit`, `polish`), agent `ui-reviewer` |
 
 - **Prove UI by looking at it.** Run the dev server and check the real page at
   390 px and desktop width, in light and dark if the app has both. "It compiles"

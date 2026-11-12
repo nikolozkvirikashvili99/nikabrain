@@ -69,3 +69,12 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 ### 2026-11-12: a migration with its own proof (Nika wrote the done-line)
 - **Before → kept:** "…baseline to this very exact build, the typescript version should output the same. done, when you have moved the entire photo-portfolio to typescript"
 - **Why it worked:** "output the same" became a checkable proof (byte-identical dist). Even better: add "ask before adding deps".
+
+### 2026-11-13: a UI request with placement, spacing and a "preview before push" gate
+- **Before → kept:** "…on pc… options sorted in header as it was, on the right side not too close to center, the gap not too big not too short… send me screen, not push it, and if I like it I'll push"
+- **Why it worked:** where it goes, the spacing feel, which widths, and the approval gate were all stated, so it was built in one pass and approved first try. Even better: name the switch width ("from tablet up").
+
+### 2026-11-13: "make it little more milky"
+- **Before:** "make it little more milky and push it"
+- **After:** "a bit creamier (not yellow, not pure white), push it"
+- **Why:** "more milky" can mean whiter or creamier. Claude guessed creamier and it held, but one word of direction removes the guess.

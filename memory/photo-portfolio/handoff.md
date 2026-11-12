@@ -1,23 +1,20 @@
 repo: C:/Users/qartv/projects/photo-portfolio/.git
-updated: 2026-11-12
+updated: 2026-11-13
 ## Worked
-- Repo re-initialised by Nika on 2026-11-12 (older history gone on purpose); root commit 6cc57c7 + 57e753f, pushed to origin/master. Confirmed by `git rev-parse HEAD origin/master` (equal).
-- Strict TypeScript 7 (`tsc -b` runs before every build). Confirmed by byte-identical dist vs the JS build.
-- Cleanup: shared photo CSS, header on `.container`, `--tap-target`, `EAGER_PHOTOS`, one reduced-motion block. Confirmed by 12/12 pixel-identical screenshots (incl. open menu, hover) + reviewer.
-- Vitest `pool: 'vmThreads'` + `maxWorkers: 1`: 60s → 13s, 39/39.
-- Home tab title = real site name; README is a short project guide; `.claude/settings.local.json` gitignored.
-- Custom domain maiagabunia.com (Porkbun DNS → Vercel project photo-portfolio). Confirmed by nslookup at Porkbun NS + 1.1.1.1 and curl 308→308→200 with the site title.
+- 2026-11-13: background is milky white `#faf8f3` and the site is light only (dark `@media` block removed, `color-scheme: light`). Confirmed by Playwright with `colorScheme: 'dark'` showing rgb(250,248,243), plus the live CSS grep.
+- 2026-11-13: desktop header (≥ 48rem): Work · About · Contact in a row, Instagram at the edge, ☰ hidden; phones unchanged. CSS only (overrides `.site-menu__list[hidden]`); Instagram moved after the nav in the DOM (keyboard order), `order: -1` on phones. Confirmed by screenshots at 390/768/1280/1920, Tab order check, 39/39 tests; Nika approved from the screenshot.
+- All pushed (HEAD 472c034 = origin/master); each push was live on maiagabunia.com within about 30 s (grep the hashed `/assets/*.css` for the new value).
+- Earlier: strict TS, cleanup, Vitest vmThreads (13 s), domain maiagabunia.com via Porkbun → Vercel.
 ## Failed: do not retry
 - `--` inside an SVG comment: breaks the SVG (XML).
 - picsum placeholders: HTTP 522; photos are local files now.
-- Playwright `networkidle` on the Vite dev server: times out (HMR socket). Use `load` (fine on `vite preview`).
+- Playwright `networkidle` on the Vite dev server: times out (HMR socket). Use `load`.
 - Multi-line string edits assuming LF: files are CRLF after checkout (autocrlf).
 ## Not tried yet
-- Move Vite → Next.js (Nika plans it): same Vercel project, switch Framework Preset; client-side redirect for old #album/ links.
+- Screenshot the ☰ open state after waiting 250 ms (the 200 ms icon transition was caught mid-way once; cosmetic, not a bug).
+- Move Vite → Next.js (same Vercel project; client-side redirect for old #album/ links).
 - Real photos: overwrite `public/albums/<slug>/NN.jpg`, real alt text in `src/data/albums.ts`.
 - Full-screen photo viewer (Nika deferred: "later").
-- Rename menu "Work" → "Albums"? (asked earlier, no answer yet).
 - `/teach semantic-html-and-grid` (week 1 still needs the lesson + quiz).
-- TS lab Day 1 (`js-to-typescript` lesson), then `/tutor` the next new component in TS.
 ## Next step
 Ask Nika: real photos now, or the full-screen viewer, written in TS via `/tutor` (Nika types the props interface).

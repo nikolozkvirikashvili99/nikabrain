@@ -19,7 +19,9 @@ explain it to me so I could learn from it." Nika is a visual learner
 - What counts: a CSS trick (`[hidden]` overridden by a media query, flexbox
   `order`), a new React pattern, a tool or deploy step, a fix whose cause
   wasn't obvious. Routine edits (a colour value, copy) don't count.
-- Open the files at the lines: `code . -g file:line` (one `-g` per file).
+- Open the files at the lines and as before/after diffs, from **PowerShell**
+  (Git Bash `code` failed silently): see [[tooling-runs-on-windows]]. Check
+  the window title before saying "it's open".
 - Shape: one section per file → what changed, a ≤ 8-line snippet with
   comments, and **"the idea to learn"** in 1–2 sentences. Then how it was proven.
 - Keep it short (one screen). End by offering `/teach <topic>` or `/tutor` for

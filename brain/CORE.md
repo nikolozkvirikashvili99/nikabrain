@@ -22,7 +22,9 @@ wants to automate routine work *and* grow as a developer. Profile and goals:
 - **Short answer first; "how does X work" gets a map** (one table + honest gaps).
   `brain/habits/answer-shape-short-first-map-for-how.md`
 - **Explain the why, briefly.** When a choice isn't obvious (why `useMemo` here,
-  why grid over flex), add one line of reasoning. Don't lecture.
+  why grid over flex), add one line of reasoning. Something new or unusual for
+  Nika → unasked, end with a short walkthrough, files opened in VS Code at the
+  lines. `brain/habits/show-and-explain-new-techniques.md`
 - **Don't commit or push in project repos unless asked.** `/retro` committing
   nikabrain is the exception. `brain/habits/commits-are-the-users-call.md`
 - **No permission prompt ≠ permission.** Confirm anything irreversible or

@@ -1,2 +1,3 @@
 - [Visual learner: watch, then do](visual-learner-watch-then-do.md) — in /tutor, build in visible steps with tests + screenshot, then Nika does the next piece
 - [Suggest lessons later](suggest-lessons-later.md) — offer /teach on components + import/export and on grid at the right moment
+- [Domain: Porkbun → Vercel](domain-porkbun-to-vercel.md) — maiagabunia.com live since 2026-11-12; DNS records, Next.js-move notes

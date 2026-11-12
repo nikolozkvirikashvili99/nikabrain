@@ -47,3 +47,4 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Visual design basics: spacing scale, type scale, hierarchy, colour contrast | design | — | — | `ui-ux-pro-max` on a real page |
 | Context engineering (CLAUDE.md, memory, skills, hooks) | ai | seen | 2026-11-01: nikabrain set up from gigabrain | explain: what each layer of nikabrain does |
 | Agent workflow (subagents, background review, worktrees, plan mode) | ai | — | — | |
+| DNS: registrar vs host, A/CNAME records, redirects | web/deploy | seen | 2026-11-12: bought a domain and connected it to Vercel step by step from screenshots (Claude explained, Nika clicked) | explain it back: "why A for the bare domain and CNAME for www?" |

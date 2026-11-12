@@ -13,6 +13,7 @@
   - Ask for: "…and show me a screenshot at mobile and desktop width".
   - Claude: for any visible change, look at the running page yourself before saying done, and say which widths and themes you checked.
   - 2026-11-12: Nika chose "review then commit" over a straight commit; the parallel UI + code review found 6 real issues. Every change was screenshotted at 390/1280 light+dark.
+  - 2026-11-12 (3rd session): Nika sent 6 screenshots (Porkbun settings, DNS list, Vercel pages) without being asked. Each one pinpointed the next click, so the domain went live with no wrong turns. Showing beat describing.
   - 2026-11-05: first evidence. Nika sent a screenshot of the Vite error overlay instead of describing it, which pinpointed a missing comma in one round. Claude screenshotted every UI change at 390/1280 in light and dark.
 - **Learn while shipping.** (seeded 2026-11-01) The goal is to grow, not only to get code.
   - Ask for: "/tutor" when the task contains a concept you want to own (a custom hook, a reducer, a layout technique); "why this and not X?" when Claude picks something.

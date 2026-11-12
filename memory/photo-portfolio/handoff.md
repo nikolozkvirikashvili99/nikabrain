@@ -6,12 +6,14 @@ updated: 2026-11-12
 - Cleanup: shared photo CSS, header on `.container`, `--tap-target`, `EAGER_PHOTOS`, one reduced-motion block. Confirmed by 12/12 pixel-identical screenshots (incl. open menu, hover) + reviewer.
 - Vitest `pool: 'vmThreads'` + `maxWorkers: 1`: 60s → 13s, 39/39.
 - Home tab title = real site name; README is a short project guide; `.claude/settings.local.json` gitignored.
+- Custom domain maiagabunia.com (Porkbun DNS → Vercel project photo-portfolio). Confirmed by nslookup at Porkbun NS + 1.1.1.1 and curl 308→308→200 with the site title.
 ## Failed: do not retry
 - `--` inside an SVG comment: breaks the SVG (XML).
 - picsum placeholders: HTTP 522; photos are local files now.
 - Playwright `networkidle` on the Vite dev server: times out (HMR socket). Use `load` (fine on `vite preview`).
 - Multi-line string edits assuming LF: files are CRLF after checkout (autocrlf).
 ## Not tried yet
+- Move Vite → Next.js (Nika plans it): same Vercel project, switch Framework Preset; client-side redirect for old #album/ links.
 - Real photos: overwrite `public/albums/<slug>/NN.jpg`, real alt text in `src/data/albums.ts`.
 - Full-screen photo viewer (Nika deferred: "later").
 - Rename menu "Work" → "Albums"? (asked earlier, no answer yet).

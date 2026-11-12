@@ -40,6 +40,7 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Event loop, promises, `async`/`await`, microtasks | js | — | — | |
 | Modules, bundling, tree-shaking (Vite) | js | seen | 2026-11-05: asked "why not one file?" and "how is it connected?"; walked through export/import with site.js → Header/Intro/Footer | `/teach components-and-import-export` (offered) |
 | Immutability and array/object methods | js | — | — | |
+| TypeScript: types, unions/narrowing, generics, typing React, strict tsconfig, migrating JS | js | — | 2026-11-12: lesson `js-to-typescript` built (3 days) + lab (`npm run day1`/`day2`); same day watched Claude convert photo-portfolio to strict TS (props interfaces, `useRef<T>`, `!`, `import type`), no code by Nika | do Day 1, then `/tutor` the next new component in TS (props interface + test) |
 | Testing UI: React Testing Library queries, user-event | testing | — | — | |
 | End-to-end tests (Playwright) | testing | — | — | |
 | Web performance: Core Web Vitals (LCP, INP, CLS), images, code splitting | perf | — | — | |

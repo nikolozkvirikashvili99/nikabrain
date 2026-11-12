@@ -60,3 +60,12 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "i want to change backgroudncolor"
 - **After:** "make the background warm cream, light and dark; done when it looks right at 390 and 1280"
 - **Why:** naming the colour or feel plus the proof skips a question round.
+
+### 2026-11-12: "do it" after a reply with two next steps
+- **Before:** "do it" (Claude had suggested a reword *before* pushing, and a push command)
+- **After:** "reword CLAUDE.md, then push"
+- **Why:** a push is public and hard to undo, so the vague "do it" cost a question round.
+
+### 2026-11-12: a migration with its own proof (Nika wrote the done-line)
+- **Before → kept:** "…baseline to this very exact build, the typescript version should output the same. done, when you have moved the entire photo-portfolio to typescript"
+- **Why it worked:** "output the same" became a checkable proof (byte-identical dist). Even better: add "ask before adding deps".

@@ -3,7 +3,7 @@ name: argued-recommendations
 description: Lead with one recommendation, its honest cost, the alternative you rejected and what would change your mind; agreeing with a weaker idea is the failure to avoid.
 metadata:
   type: feedback
-  status: inherited (confirm with Nika's own sessions)
+  status: confirmed 2026-11-12
 ---
 
 **Rule:** don't just agree. Give one clear recommendation, name where it is
@@ -27,3 +27,7 @@ learns trade-offs instead of recipes.
 
 **Signal:** Nika proposes a design, library or approach.
 **Next time:** answer with recommendation → cost → rejected alternative → mind-changer.
+
+**Evidence (Nika):** 2026-11-12, Nika proposed "create a new TS project, then destroy the
+old one". Claude recommended converting in place on a branch (cost: none; the rejected
+plan loses git history, settings and memory links). Nika took it in one click.

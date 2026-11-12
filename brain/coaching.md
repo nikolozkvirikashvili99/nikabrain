@@ -7,6 +7,7 @@
   - 2026-11-03: 0/8 prompts had a done-line, but Nika picked the proposed done option ("4a: running skeleton") in one line. Offering the done-line as an option works; writing one unprompted hasn't started yet.
   - 2026-11-05: 0 of ~40 prompts had a done-line, but Nika wrote a better prompt *unprompted* mid-session (handoff path + next skill). Claude stated the done-line before each build (socials, menu); Nika accepted it every time.
   - 2026-11-12: 0/3 build prompts had a done-line (albums, favicon, background). The background request needed a question round (which colour, dark too?); Claude stated the done-line before building and Nika picked the recommended options in one go.
+  - 2026-11-12 (2nd session): **first unprompted done-lines.** Both build prompts named the proof ("the typescript version should output the same. done, when…"; "baseline to what it is right now. done when…"). The first became byte-identical dist + screenshots. Session 1 of 3 toward retiring this bullet. Still missing: "ask first" (adding an npm dep needed a question).
   - 2026-11-02 (3rd session): 0/7 prompts had a done-line. The learning-plan request left out level, time and horizon, so it took two question rounds; Claude proposed the per-week proofs.
 - **Show me, don't tell me (UI).** (seeded 2026-11-01) UI work is only done when someone looked at it. No evidence about Nika yet.
   - Ask for: "…and show me a screenshot at mobile and desktop width".
@@ -20,4 +21,5 @@
   - 2026-11-05: first `/tutor` run (Header). Nika switched to "watch me build it" after 2 hints, then made small edits alone (name, email, phone, social links, a syntax fix). Asked 3 good "why/how" questions. Lessons on import/export and grid deferred by Nika ("suggest by the time").
   - 2026-11-09: Nika asked for a 5-minute lesson before sleep; got the grid `auto-fill`/`minmax`/`min()` pattern plus a quiz, tied to the gallery TODO. This primes week 1 (grid), and no code was written for Nika.
   - 2026-11-12: Nika wrote the gallery grid CSS (week-1 concept, applied). On the album card Nika said "simplify for me", then "do it yourself", so the tutor step was too big. Nika asked a real "why" (tokens.css vs global.css).
+  - 2026-11-12 (2nd session): concepts.md planned "`/tutor` the photo-portfolio TS conversion", but Nika picked "I do it all, you watch" and Claude converted all 23 files. The offer was made once and declined; next time say that this *is* the planned practice task, and offer a small slice (type one component's props).
   - 2026-11-03: Nika chose "mixed" mode (writes the Header + grid CSS) and asked to learn through the real project. Still no `/tutor` run: the session paused before Nika's part.

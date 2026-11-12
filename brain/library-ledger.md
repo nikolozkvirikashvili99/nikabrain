@@ -51,4 +51,4 @@ because it *is* Nika's daily stack. Watch for that lift here.)
 | checklist `tests.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `security.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `types.md` | ecc | 2026-11-01 | 0.4 | — |
-| checklist `css-html.md` | nikabrain | 2026-11-01 | 0.4 | — |
+| checklist `css-html.md` | nikabrain | 2026-11-01 | 0.5 | 2026-11-12: own React SPA CSS cleanup review, cascade/specificity check of moved rules matched pixel-identical screenshots; held up |

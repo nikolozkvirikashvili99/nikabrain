@@ -24,12 +24,23 @@ pick one shell per command.
   lost its `${site.name}` (bash expanded it to nothing, giving `aria-label={}`).
   Code with `${}` or backticks goes in a script *file* (Write tool), never in an
   inline double-quoted `node -e`.
+  Same root cause, 2026-11-12: a `'\r\n'` written through a bash heredoc into a
+  Node script arrived as real line breaks (SyntaxError). Avoid escapes that pass
+  through two languages: `String.fromCharCode(13, 10)`.
+- **Files are CRLF after a git checkout or merge** (`core.autocrlf=true`): 2026-11-12, an
+  edit script's multi-line `
+` patterns matched nothing after a merge, while one-line
+  patterns still worked. Edit scripts: normalise CRLF→LF on read, write back the file's
+  own line ending, and fail when a pattern doesn't match exactly once.
 - **Vitest workers crash on Nika's 8 GB machine** (2026-11-05): with VS Code,
   the dev server and Edge open, free RAM was ~1.1 GB, and the default pool
   (one jsdom worker per core, 4) died at startup with `Worker exited
   unexpectedly with exit code 134`. Only some test files ran, so the summary
   showed fewer tests, not failures. Fix: `test: { maxWorkers: 1 }` in
   `vite.config.js` (3/3 clean runs after). Watch for a test *count* drop.
+  With one worker the suite was slow (60s, 75% creating jsdom per file); adding
+  `pool: 'vmThreads'` (still one worker) took it to 13s, 39/39, and keeps each file
+  isolated (`isolate: false` was equally fast but shares state) (2026-11-12).
 - **Opening VS Code for Nika:** `code .` in the repo, not `code path/file.jsx`.
   A single file opens with no Explorer tree, and Nika couldn't find
   `src/data/` (2026-11-05).

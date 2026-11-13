@@ -1,20 +1,23 @@
 repo: C:/Users/qartv/projects/photo-portfolio/.git
 updated: 2026-11-13
-## Worked
-- 2026-11-13: background is milky white `#faf8f3` and the site is light only (dark `@media` block removed, `color-scheme: light`). Confirmed by Playwright with `colorScheme: 'dark'` showing rgb(250,248,243), plus the live CSS grep.
-- 2026-11-13: desktop header (≥ 48rem): Work · About · Contact in a row, Instagram at the edge, ☰ hidden; phones unchanged. CSS only (overrides `.site-menu__list[hidden]`); Instagram moved after the nav in the DOM (keyboard order), `order: -1` on phones. Confirmed by screenshots at 390/768/1280/1920, Tab order check, 39/39 tests; Nika approved from the screenshot.
-- All pushed (HEAD 472c034 = origin/master); each push was live on maiagabunia.com within about 30 s (grep the hashed `/assets/*.css` for the new value).
-- Earlier: strict TS, cleanup, Vitest vmThreads (13 s), domain maiagabunia.com via Porkbun → Vercel.
+## Worked (all pushed; HEAD 0d05361 = origin/master, each push live on maiagabunia.com in ~20-40 s, proven by grepping the hashed /assets file)
+- Warm palette in tokens.css only: linen #efe6d8 page, espresso #2b211c text + header/footer (contrast 5.3-12.7:1 measured). CLAUDE.md design note updated.
+- Header: espresso band, sticky (scroll-padding = --header-height), logo-only (name visually hidden), phone 72px / desktop 88px via --logo-size/--header-pad/--header-height tokens.
+- About: whole photo left + Bodoni Moda name/tagline right on desktop; phone = slim banner with a stronger warm scrim (text 8:1, measured on pixels). About text + Selected Work (Credits.tsx, after the grid) centred; 1px espresso lines around the grid.
+- 4 albums (fashion, brands, weddings, portraits), 1 real cover each (2000px web copies, EXIF stripped); placeholders removed.
+- Album cards: lift + warm shadow on hover (`@media (hover: hover)`), no fade. Full-screen viewer: native <dialog> (PhotoViewer.tsx), × hidden visually (shows on keyboard focus), tap beside to close, prev/next + arrows when >1 photo. 55/55 tests.
+- Footer: centred socials, mail/phone icons. Tab icon = bold aperture, light/dark switching; apple-touch-icon = full logo.
+- Publish: Ctrl+Shift+B (scripts/ship.mjs: lint+tests+build then commit+push); "Publish on save" task exists (autoship) but Nika hasn't turned it on.
 ## Failed: do not retry
-- `--` inside an SVG comment: breaks the SVG (XML).
-- picsum placeholders: HTTP 522; photos are local files now.
-- Playwright `networkidle` on the Vite dev server: times out (HMR socket). Use `load`.
-- Multi-line string edits assuming LF: files are CRLF after checkout (autocrlf).
+- Text-only question dialogs for visual choices: rejected 5x. Render previews first ([[visual-choices-get-rendered-previews]]).
+- Overwriting a PNG that's open in the Windows viewer: EBUSY. Use a new filename.
+- Playwright eval right after an index.html edit: "context destroyed" (Vite full reload). Rerun.
+- `--`, picsum, networkidle, LF-assuming edits: see earlier (still true).
 ## Not tried yet
-- Screenshot the ☰ open state after waiting 250 ms (the 200 ms icon transition was caught mid-way once; cosmetic, not a bug).
-- Move Vite → Next.js (same Vercel project; client-side redirect for old #album/ links).
-- Real photos: overwrite `public/albums/<slug>/NN.jpg`, real alt text in `src/data/albums.ts`.
-- Full-screen photo viewer (Nika deferred: "later").
-- `/teach semantic-html-and-grid` (week 1 still needs the lesson + quiz).
+- Phone Back closes only the viewer (push a history entry on open).
+- Swipe between photos (Nika chose "later").
+- Index.html meta description still has the old tagline; nav "Selected Work" vs heading "Selected Work" clash; favicon/apple icon still cool black, not espresso.
+- More photos per album (Nika sends Quick Share links; scratchpad qsget.cjs + webcopy.cjs did download → 2000px → strip EXIF).
+- `/tutor` one line: the viewer's `useState` (Nika: "learn this later").
 ## Next step
-Ask Nika: real photos now, or the full-screen viewer, written in TS via `/tutor` (Nika types the props interface).
+Ask Nika which album gets more photos first, then add them (02.jpg…) with alt text.

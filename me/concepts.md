@@ -13,7 +13,7 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Concept | Area | Level | Evidence | Next step |
 |---|---|---|---|---|
 | Rendering & reconciliation (when and why a component re-renders) | react | — | — | `/teach react-rendering` |
-| `useState` / batching / state as a snapshot | react | seen | 2026-11-05: watched the menu open/close state built | |
+| `useState` / batching / state as a snapshot | react | seen | 2026-11-05: watched the menu open/close state built. 2026-11-13: `/tutor` scaffold for the photo viewer (`useState<number \| null>` + props interface + callbacks); saw the tests red, then handed it back ("learn later") | `/tutor` ONE line: the viewer's `useState` (see PhotoViewer walkthrough) |
 | `useEffect`: dependencies, cleanup, "you might not need an effect" | react | seen | 2026-11-05: watched Escape/outside-click listeners with cleanup | |
 | `useRef` vs state; refs to DOM | react | seen | 2026-11-05: watched refs used for contains() and focus return | |
 | Custom hooks (extracting stateful logic) | react | — | — | `/tutor`: write one |
@@ -33,7 +33,7 @@ yet. Nika may set a starting level by self-assessment; mark it "(self)" so
 | Flexbox | css | seen | 2026-11-13: walkthrough of `order: -1` (visual order ≠ code order) and `display: flex` + `gap` turning the dropdown into a row | change `order` in DevTools and watch the icon move |
 | Grid (incl. `minmax`, `auto-fit`, subgrid) | css | build | 2026-11-09: micro-lesson on `repeat(auto-fill, minmax(min(100%, 16rem), 1fr))`. 2026-11-12: wrote the gallery grid line themselves, checked at 390/1280 | explain unaided: why `auto-fill` vs `auto-fit` |
 | Responsive design: fluid type, `clamp()`, container queries | css | seen | 2026-11-13: walkthrough of the desktop header, one `<ul>` shown as ☰ dropdown or row by `@media (min-width: 48rem)` overriding `[hidden]` | change `48rem` → `60rem` and resize the window; then `/tutor` a breakpoint |
-| Design tokens / custom properties, theming, dark mode | css | seen | 2026-11-12: asked why the background changed in tokens.css not global.css; got value-vs-usage + dark-mode-for-free. 2026-11-13: saw why the site was always dark (`prefers-color-scheme` follows the OS) and chose light only | change a token alone (try another `--color-bg`) |
+| Design tokens / custom properties, theming, dark mode | css | build | 2026-11-12: asked why the background changed in tokens.css not global.css; got value-vs-usage + dark-mode-for-free. 2026-11-13: saw why the site was always dark (`prefers-color-scheme` follows the OS) and chose light only. 2026-11-13 (3rd): changed `--color-inverse-bg` alone with the VS Code colour picker (red, then black) and watched localhost update; saw a whole warm palette swap by editing only tokens.css | explain unaided: why redefining `--color-text` inside `.site-header` recolours everything in it |
 | Transitions and animations; `prefers-reduced-motion` | css | — | — | |
 | Accessibility: keyboard, focus, ARIA only when needed, contrast | a11y | — | — | |
 | Closures and scope | js | — | — | |

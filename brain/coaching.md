@@ -11,14 +11,7 @@
   - 2026-11-13: 0/3 build prompts had a done-line (milky, more milky, desktop nav), so the streak toward retiring broke at 1. But the nav prompt set its own gate ("send me screen, not push… if I like it I'll push"), which is half a done-line: the *who-approves*. Claude stated the proof before each build.
   - 2026-11-02 (3rd session): 0/7 prompts had a done-line. The learning-plan request left out level, time and horizon, so it took two question rounds; Claude proposed the per-week proofs.
   - 2026-11-13 (3rd session, long): 0/20 build prompts had a done-line, but Nika's substitute worked: "show me versions, I'll choose" (~8×) made the *pick* the finish line, and "push" the approval. Vague amounts ("a little smaller", "more cozy") cost a preview round each. Next: add the number or the where ("phone header ~72px; desktop unchanged").
-- **Show me, don't tell me (UI).** (seeded 2026-11-01) UI work is only done when someone looked at it. No evidence about Nika yet.
-  - Ask for: "…and show me a screenshot at mobile and desktop width".
-  - Claude: for any visible change, look at the running page yourself before saying done, and say which widths and themes you checked.
-  - 2026-11-12: Nika chose "review then commit" over a straight commit; the parallel UI + code review found 6 real issues. Every change was screenshotted at 390/1280 light+dark.
-  - 2026-11-12 (3rd session): Nika sent 6 screenshots (Porkbun settings, DNS list, Vercel pages) without being asked. Each one pinpointed the next click, so the domain went live with no wrong turns. Showing beat describing.
-  - 2026-11-13: **Nika asked for the screenshot unprompted** ("send me screen", then "show me the screenshot") and approved the header from it before pushing. Claude opened the PNGs in Windows' viewer because tool output may not reach Nika. 1 of 3 toward retiring this bullet.
-  - 2026-11-05: first evidence. Nika sent a screenshot of the Vite error overlay instead of describing it, which pinpointed a missing comma in one round. Claude screenshotted every UI change at 390/1280 in light and dark.
-  - 2026-11-13 (3rd session): **2 of 3 toward retiring.** Nika asked for screenshots/versions unprompted about 8 times and chose every look from rendered previews; nothing was pushed without a picture first. New habit: [[visual-choices-get-rendered-previews]].
+  - 2026-11-15: 0/3 build prompts had a done-line, but the gate held: Nika approved each step from a screenshot and said "push" only then. One build (text over the photo on phones) was rejected on sight, and the screenshot caught it before it went live. Next: name the where ("on phones only, desktop unchanged").
 - **Learn while shipping.** (seeded 2026-11-01) The goal is to grow, not only to get code.
   - Ask for: "/tutor" when the task contains a concept you want to own (a custom hook, a reducer, a layout technique); "why this and not X?" when Claude picks something.
   - Claude: at most one line of "why" for a non-obvious choice; offer `/tutor` once when a task has a learnable core.

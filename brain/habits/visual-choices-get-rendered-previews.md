@@ -28,6 +28,8 @@ local HTML demo with Subtle/Medium/Strong buttons, because a still can't show it
 - Recommend one option, but let the picture do the arguing
   ([[argued-recommendations]]).
 
+**Evidence 2026-11-15:** Claude rendered three fonts but opened three separate PNGs; Nika asked "give me in 1 window". The side-by-side sheet also flipped Claude's own pick (Bodoni → Cormorant: the thin italic read worse next to the others). So compose the sheet *before* recommending, every time.
+
 **Signal:** a request with a vague amount ("a little smaller", "more cozy",
 "highlight it", "make it shiny") or "show me / which one".
 

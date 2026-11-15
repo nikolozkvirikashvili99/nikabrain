@@ -78,3 +78,8 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "make it little more milky and push it"
 - **After:** "a bit creamier (not yellow, not pure white), push it"
 - **Why:** "more milky" can mean whiter or creamier. Claude guessed creamier and it held, but one word of direction removes the guess.
+
+### 2026-11-15: four card texts sent as four separate messages
+- **Before:** "this text is for fashion under fashion card \"…\"", then brands, weddings, portraits, each mid-turn
+- **After:** "text under each album card: Fashion: \"…\" · Brands: \"…\" · Weddings: \"…\" · Portraits: \"…\". Show me phone + desktop before push."
+- **Why:** one message = one edit, one check, one screenshot round instead of four interruptions.

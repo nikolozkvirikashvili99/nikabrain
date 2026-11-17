@@ -45,9 +45,9 @@ because it *is* Nika's daily stack. Watch for that lift here.)
 | skill `web-performance` | web-quality-skills | 2026-11-12 | 0.4 | — |
 | skill `fixing-motion-performance` | ui-skills | 2026-11-12 | 0.4 | — |
 | skill `fixing-metadata` | ui-skills | 2026-11-12 | 0.4 | — |
-| checklist `react.md` | ecc | 2026-11-01 | 0.5 | 2026-11-12: own React SPA review, flagged lost focus on view swap and untested effects; held up |
+| checklist `react.md` | ecc | 2026-11-01 | 0.6 | 2026-11-12: own React SPA review, flagged lost focus on view swap and untested effects; held up · 2026-11-17: hash→path routing review, caught a scroll intent in history.state re-firing on Back (focus lost) and section links no longer moving focus; held up |
 | checklist `typescript.md` | ecc | 2026-11-01 | 0.4 | — |
-| checklist `silent-failures.md` | ecc | 2026-11-01 | 0.5 | 2026-11-12: own React SPA review, caught `decodeURIComponent` throwing in render (blank page); held up |
+| checklist `silent-failures.md` | ecc | 2026-11-01 | 0.6 | 2026-11-12: own React SPA review, caught `decodeURIComponent` throwing in render (blank page); held up · 2026-11-17: caught a catch-all link interceptor that would silently send file links to the home page; held up |
 | checklist `tests.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `security.md` | ecc | 2026-11-01 | 0.4 | — |
 | checklist `types.md` | ecc | 2026-11-01 | 0.4 | — |

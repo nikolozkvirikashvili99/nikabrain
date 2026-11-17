@@ -83,3 +83,8 @@ sessions) to show the shape. `/curate` deletes them once real ones exist.
 - **Before:** "this text is for fashion under fashion card \"…\"", then brands, weddings, portraits, each mid-turn
 - **After:** "text under each album card: Fashion: \"…\" · Brands: \"…\" · Weddings: \"…\" · Portraits: \"…\". Show me phone + desktop before push."
 - **Why:** one message = one edit, one check, one screenshot round instead of four interruptions.
+
+### 2026-11-17: "#work" → "just # part" → "anywhere in my site"
+- **Before:** "we have \"#work\" tag in url i dont like that can you delate it?" (then two corrections: "i dont like just \"#\" part", "i dont want to see that \"#\" anywhere in my site")
+- **After:** "No # anywhere on the site: not in the address bar, not on album pages, not when hovering a link. It's the live site, so check it on the live site after push. Push when green."
+- **Why:** the first prompt named one instance (`#work`), so Claude fixed only that one; the real rule ("no `#` anywhere") arrived in two more rounds. Name the rule, not the example.

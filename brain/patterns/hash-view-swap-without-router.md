@@ -1,6 +1,6 @@
 ---
 name: hash-view-swap-without-router
-description: Swapping whole views on `#hash` in React without a router needs three things done by hand - a decode that can't throw, scroll after render, and focus restored to where the user came from.
+description: Swapping whole views in React without a router (on `#hash` or on clean paths via pushState) needs things done by hand - a decode that can't throw, scroll after render, focus restored, and for paths a one-shot scroll intent, narrow link interception and a host rewrite.
 metadata:
   type: feedback
 ---
@@ -31,4 +31,22 @@ with `toHaveFocus()` after dispatching a `HashChangeEvent` inside `act`.
 
 **Next time:** write the malformed-hash test and the focus-on-return test together with the hook.
 
-Related: [[steer-parallelism-and-agent-roles]], [[test-guards-against-innocent-lookalikes]]
+**Clean paths instead of `#` (2026-11-17).** A site owner disliked any `#` in the URL, so the
+same site moved to `/album/<slug>` via `history.pushState`. Extra traps, four caught by a
+background `reviewer`, one by a failing test:
+4. **Scroll intent is one-shot.** Keep "scroll to section X / top" in a module variable that
+   the route effect *takes* on every route change, detail views included. Kept in
+   `history.state`, it fired again on Back and on reload; left unconsumed on a detail view,
+   the next Back used it.
+5. **Intercept only your routes.** A document click handler that catches every same-origin
+   `<a>` also swallows future links to files (`/photo.jpg`, a PDF). Check the path is a known
+   route, and skip modifier keys, `target`, `download` and a missing `href`.
+6. **"No `#`" includes the hover status bar.** Section links become paths too (`/about`):
+   scroll, focus the section (`tabIndex=-1`), keep the address bar `/`. Clean up old
+   `/#…` and bare `/#` links on load *and* on `hashchange` (a paste doesn't reload).
+7. **The host must serve `index.html` for every path** (Vercel: catch-all rewrite;
+   static files still win) plus `trailingSlash: false`. Prove it on the live site with
+   `curl -s -o /dev/null -w '%{http_code}'` per path, not on the dev server, which does it
+   for free.
+
+Related: [[outward-claims-carry-their-proof]], [[steer-parallelism-and-agent-roles]], [[test-guards-against-innocent-lookalikes]]

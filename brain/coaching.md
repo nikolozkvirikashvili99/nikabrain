@@ -12,6 +12,7 @@
   - 2026-11-02 (3rd session): 0/7 prompts had a done-line. The learning-plan request left out level, time and horizon, so it took two question rounds; Claude proposed the per-week proofs.
   - 2026-11-13 (3rd session, long): 0/20 build prompts had a done-line, but Nika's substitute worked: "show me versions, I'll choose" (~8×) made the *pick* the finish line, and "push" the approval. Vague amounts ("a little smaller", "more cozy") cost a preview round each. Next: add the number or the where ("phone header ~72px; desktop unchanged").
   - 2026-11-15: 0/3 build prompts had a done-line, but the gate held: Nika approved each step from a screenshot and said "push" only then. One build (text over the photo on phones) was rejected on sight, and the screenshot caught it before it went live. Next: name the where ("on phones only, desktop unchanged").
+  - 2026-11-17: 0/1 build prompt had a done-line, and it cost two correction rounds: "#work" → "just the # part" → "anywhere in my site". The final prompt was the best of the session: it named the rule *and* the approval ("if you finish push it"). Next: name the rule, not the one example ("no # anywhere").
 - **Learn while shipping.** (seeded 2026-11-01) The goal is to grow, not only to get code.
   - Ask for: "/tutor" when the task contains a concept you want to own (a custom hook, a reducer, a layout technique); "why this and not X?" when Claude picks something.
   - Claude: at most one line of "why" for a non-obvious choice; offer `/tutor` once when a task has a learnable core.

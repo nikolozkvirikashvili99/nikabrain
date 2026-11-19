@@ -2,7 +2,8 @@
 name: fact-check-generated-knowledge
 description: "A mechanical checker can't see facts: generated lessons, quizzes and briefs need a docs fact-check aimed at what the authors took from memory or marked least sure, plus a grep for retired services. 2026-10-15: 1,225 exam questions passed the checker with 3 wrong keys inside."
 metadata:
-  origin: gigabrain (inherited 2026-11-01; evidence is from the source brain, not yet from Nika)
+  origin: gigabrain (inherited 2026-11-01)
+  status: confirmed 2026-11-20
   type: feedback
 ---
 
@@ -87,3 +88,13 @@ was rewritten. For any spec or API with numbered revisions, ask "what is the new
 revision, and what did it remove?" first, wait for that one answer, then draft. In the
 same session the exam author's 5 "beyond the brief" items were checked against the spec
 page before handover: 5/5 held (0 wrong), so the hand-back list cost one fetch.
+
+**Confirmed in Nika's own work (2026-11-20, lesson semantic-html-and-grid):** the
+researcher fact-check corrected 2 of 20 claims (a header/footer inside main or a
+sectioning element is not banner/contentinfo; subgrid is Widely available). A number
+worked out by hand was still wrong after that: `auto-fit` with 2 items at 1100 px
+was written as 526 px, but the browser gives 542, because the gaps next to collapsed
+tracks collapse too. It was caught because the lesson's live figure reads
+`getComputedStyle(grid).gridTemplateColumns` from a hidden real grid, and a Playwright
+run asserted each stated number. For CSS lessons, make the figure compute with the
+browser and assert every number the text states.

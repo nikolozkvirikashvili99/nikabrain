@@ -40,6 +40,7 @@ Fill in or correct anything below. `/retro` adds lines only with evidence.
 - nikabrain is the only brain; gigabrain is reference material, not a second brain (2026-11-02). Projects are opened in their own folder, not from nikabrain (2026-11-05, [[open-claude-in-the-project-folder]]).
 - Hands off whole setup chores ("do these steps on my behalf"); wants them done, checked and committed, not listed (2026-11-02).
 - Writes short, informal prompts, often without a done-line or proof (2026-11-02, 4/4 prompts).
+- Keeps lessons in `~/projects/lessons/` (asked 2026-11-20: "make a folder for the lessons in here"). `/teach` still builds into `~/.cache/nikabrain/learn/`; copy each finished lesson (and its lab) there too.
 - Wants to learn *through* the real project and asked for "a program that helps me develop" (2026-11-03). Likes to pause and resume later rather than finish in one sitting.
 
 ## Known strengths / growth areas
